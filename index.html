@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ichroc Fassassi, élève ingénieur en cybersécurité et infrastructure</title>
+<meta name="description" content="Élève ingénieur en 5e année à l'ESEO, spécialité Cloud, Systèmes et Sécurité. Je cherche un stage de fin d'études de 17 semaines à partir de fin janvier 2027 : SOC, audit de sécurité, réseau, cloud.">
+<meta name="author" content="Ichroc Fassassi">
+<link rel="canonical" href="https://ichroc.github.io/">
+
+<!-- Aperçu quand le lien est partagé (LinkedIn, mail, messagerie) -->
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Ichroc Fassassi, élève ingénieur Cloud, Systèmes et Sécurité">
+<meta property="og:description" content="Je cherche un stage de fin d'études à partir de fin janvier 2027 : SOC, audit de sécurité, réseau, cloud et DevOps.">
+<meta property="og:url" content="https://ichroc.github.io/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/200066265?v=4">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318212C'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Times New Roman,Times,serif' font-size='34' fill='%23F3F5F7'%3EIF%3C/text%3E%3C/svg%3E">
+
+<!-- Données structurées : aident les moteurs de recherche à comprendre qui vous êtes -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ichroc Fassassi",
+  "jobTitle": "Élève ingénieur, spécialité Cloud, Systèmes et Sécurité",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "ESEO", "address": "Angers, France" },
+  "email": "mailto:ichroc_fassassi@reseau.eseo.fr",
+  "url": "https://ichroc.github.io/",
+  "sameAs": ["https://github.com/Ichroc", "https://www.linkedin.com/in/ichroc-fassassi"],
+  "knowsAbout": ["Wazuh", "SIEM", "SOC", "MITRE ATT&CK", "Cisco", "OPNsense", "iptables", "Docker", "Ansible", "Vagrant", "Linux"],
+  "knowsLanguage": ["fr", "en"]
+}
+</script>
+
+<style>
+:root {
+  --paper: #F3F5F7;
+  --panel: #FFFFFF;
+  --ink: #18212C;
+  --muted: #586374;
+  --line: #D6DCE3;
+  --accent: #1F4FD1;
+  --alert: #C8102E;
+  --ok: #13795B;
+  --q: var(--accent);
+  --d: var(--alert);
+  --r: var(--ok);
+  color-scheme: light dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1621;
+    --panel: #132034;
+    --ink: #E7EBF0;
+    --muted: #9AA6B6;
+    --line: #26354A;
+    --accent: #8AA8FF;
+    --alert: #FF6B7D;
+    --ok: #52C997;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1621;
+  --panel: #132034;
+  --ink: #E7EBF0;
+  --muted: #9AA6B6;
+  --line: #26354A;
+  --accent: #8AA8FF;
+  --alert: #FF6B7D;
+  --ok: #52C997;
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5rem); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, "Liberation Serif", "Nimbus Roman", serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a { color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-weight: 400; margin: 0; }
+p { margin: 0 0 1em; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--panel); padding: .5em 1em; z-index: 10; }
+
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* En-tête */
+.site-head {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4rem; }
+.mark { color: var(--ink); text-decoration: none; font-size: 1.3rem; white-space: nowrap; }
+.site-head nav { display: flex; gap: 1.6rem; align-items: center; font-size: 1.08rem; }
+.site-head nav a { color: var(--ink); text-decoration: none; }
+.site-head nav a:hover { color: var(--accent); }
+.site-head nav .nav-cta { border: 1px solid var(--ink); padding: .25em .9em; border-radius: 2px; }
+@media (max-width: 760px) {
+  .site-head nav a:not(.nav-cta) { display: none; }
+}
+
+/* Ouverture */
+.hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(4rem, 8vw, 6rem); }
+.hero > * { min-width: 0; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+.status { display: flex; gap: .6em; align-items: baseline; color: var(--muted); font-style: italic; font-size: 1.1rem; margin-bottom: 1.4rem; }
+.status .dot { width: .6em; height: .6em; border-radius: 50%; background: var(--ok); flex: none; transform: translateY(-.05em); }
+.hero h1 { font-size: clamp(3.6rem, 9.5vw, 7.4rem); line-height: .9; letter-spacing: -.025em; margin-bottom: 2rem; }
+.role { font-size: 1.35rem; max-width: 26em; }
+.lede { font-style: italic; font-size: clamp(1.5rem, 2.5vw, 1.95rem); line-height: 1.35; max-width: 20em; margin-bottom: 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.btn { display: inline-block; padding: .6em 1.2em; border: 1px solid var(--ink); border-radius: 2px; color: var(--ink); text-decoration: none; font-size: 1.1rem; line-height: 1.3; }
+.btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--accent); color: #fff; }
+
+/* Journal de détection : l'élément fort de la page */
+.console { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.3rem .9rem; box-shadow: 0 30px 60px -40px rgba(16, 28, 52, .45); }
+.console-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: .7rem; }
+.console-head h2 { font-size: 1.2rem; }
+.replay { font: inherit; font-size: 1rem; font-style: italic; color: var(--accent); background: none; border: 0; padding: .2em .1em; cursor: pointer; }
+.replay:hover { text-decoration: underline; }
+.log { list-style: none; margin: 0; padding: 0; }
+.log-row { display: grid; grid-template-columns: 4.3em 1fr auto; gap: .2em .9em; align-items: baseline; padding: .6em 0 .6em .8em; border-top: 1px solid var(--line); border-left: 3px solid var(--stage); font-size: 1.08rem; line-height: 1.4; }
+.log-row[data-stage="q"] { --stage: var(--q); }
+.log-row[data-stage="d"] { --stage: var(--d); }
+.log-row[data-stage="r"] { --stage: var(--r); }
+.log-row time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.log-row .tag { font-style: italic; font-size: .95rem; color: var(--stage); white-space: nowrap; }
+.log-row.is-key .ev { font-weight: 700; }
+.console figcaption { color: var(--muted); font-size: .98rem; font-style: italic; line-height: 1.45; padding-top: .8rem; border-top: 1px solid var(--line); }
+.js-anim .log-row { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
+.js-anim .log-row.is-shown { opacity: 1; transform: none; }
+@media (max-width: 560px) {
+  .log-row { grid-template-columns: 4.1em 1fr; }
+  .log-row .tag { grid-column: 2; }
+}
+
+/* Sections */
+section { padding: clamp(4rem, 9vw, 7rem) 0; }
+.band { border-top: 1px solid var(--line); }
+h2.title { font-size: clamp(2.3rem, 4.6vw, 3.5rem); line-height: 1.08; letter-spacing: -.01em; margin-bottom: .5em; max-width: 18em; }
+.intro { max-width: 38em; }
+.meta { color: var(--muted); font-style: italic; }
+
+/* Projet phare : SOC */
+.pipeline { list-style: none; margin: 3rem 0 3.5rem; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; counter-reset: none; }
+.pipeline li { border-top: 4px solid var(--stage); padding: 1.3rem 1.3rem 1.4rem; background: color-mix(in srgb, var(--stage) 5%, var(--panel)); border-radius: 0 0 6px 6px; }
+.pipeline li[data-stage="q"] { --stage: var(--q); }
+.pipeline li[data-stage="d"] { --stage: var(--d); }
+.pipeline li[data-stage="r"] { --stage: var(--r); }
+.pipeline .step { display: block; font-size: 3rem; line-height: 1; font-style: italic; color: var(--stage); margin-bottom: .4rem; }
+.pipeline h3 { font-size: 1.7rem; margin-bottom: .5rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .3em .6em; }
+.mine { font-size: .95rem; font-style: italic; color: var(--q); border: 1px solid var(--q); border-radius: 999px; padding: .05em .7em; white-space: nowrap; }
+.pipeline p { margin: 0; font-size: 1.12rem; }
+.notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.notes h3 { font-size: 1.3rem; margin-bottom: .4rem; }
+.notes p { font-size: 1.12rem; color: var(--ink); }
+@media (max-width: 900px) {
+  .pipeline, .notes { grid-template-columns: 1fr; }
+}
+
+/* Autres projets */
+.projects { margin-top: 2.5rem; }
+.project { display: grid; grid-template-columns: 11rem 1fr 15rem; gap: 1rem 2.5rem; padding: 2.2rem 0; border-top: 1px solid var(--line); }
+.project:last-child { border-bottom: 1px solid var(--line); }
+.p-when { color: var(--muted); font-style: italic; font-size: 1.08rem; line-height: 1.4; }
+.p-when span { display: block; }
+.project h3 { font-size: 1.75rem; line-height: 1.15; margin-bottom: .35rem; }
+.p-role { color: var(--muted); font-style: italic; margin-bottom: .7rem; }
+.project ul { margin: .4rem 0 0; padding-left: 1.1em; }
+.project li { margin-bottom: .3em; }
+.project li::marker { color: var(--muted); }
+.p-tools { font-size: 1.05rem; color: var(--muted); line-height: 1.5; margin: 0; }
+.p-tools b { display: block; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: .2em; }
+@media (max-width: 900px) {
+  .project { grid-template-columns: 1fr; }
+}
+
+/* Compétences */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2.6rem 2.4rem; margin-top: 2.5rem; }
+.skills h3 { font-size: 1.5rem; margin-bottom: .45rem; }
+.skills p { font-size: 1.12rem; margin-bottom: .6rem; }
+.skills .tools { color: var(--muted); font-style: italic; font-size: 1.05rem; }
+
+/* Parcours */
+.split { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.timeline { list-style: none; margin: 2rem 0 0; padding: 0 0 0 1.6rem; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding-bottom: 1.8rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: calc(-1.6rem - 7px); top: .45em; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); }
+.timeline li.next::before { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 25%, var(--paper)); }
+.timeline .when { display: block; color: var(--muted); font-style: italic; font-size: 1.05rem; }
+.timeline .what { font-size: 1.2rem; }
+.certs { list-style: none; margin: 2rem 0 0; padding: 0; }
+.certs li { padding: 1rem 0; border-top: 1px solid var(--line); }
+.certs li:last-child { border-bottom: 1px solid var(--line); }
+.certs .name { display: block; font-size: 1.2rem; }
+.certs a { font-size: 1.05rem; font-style: italic; }
+.langs { margin-top: 2rem; }
+.langs h3 { font-size: 1.3rem; margin-bottom: .3rem; }
+
+/* Contact */
+.contact { background: var(--ink); color: var(--paper); }
+.contact h2.title { color: var(--paper); }
+.contact .intro { color: color-mix(in srgb, var(--paper) 82%, var(--ink)); }
+.mail { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.4rem; margin: 2.2rem 0 1.6rem; }
+.mail a { color: var(--paper); font-size: clamp(1.35rem, 3.2vw, 2.3rem); overflow-wrap: anywhere; text-decoration-color: color-mix(in srgb, var(--paper) 45%, transparent); }
+.copy { font: inherit; font-size: 1.05rem; font-style: italic; color: var(--paper); background: none; border: 1px solid color-mix(in srgb, var(--paper) 45%, transparent); border-radius: 2px; padding: .3em .9em; cursor: pointer; }
+.copy:hover { border-color: var(--paper); }
+.elsewhere { display: flex; flex-wrap: wrap; gap: 1.6rem; font-size: 1.2rem; margin: 0; }
+.elsewhere a { color: var(--paper); }
+.contact :focus-visible { outline-color: var(--paper); }
+
+footer { padding: 0 0 2.5rem; background: var(--ink); color: color-mix(in srgb, var(--paper) 60%, var(--ink)); font-size: 1rem; }
+footer .wrap { border-top: 1px solid color-mix(in srgb, var(--paper) 18%, var(--ink)); padding-top: 1.6rem; }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="#top">Ichroc Fassassi</a>
+    <nav aria-label="Sections">
+      <a href="#soc">Projet actuel</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a class="nav-cta" href="#contact">Me contacter</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <div class="wrap">
+    <section class="hero" id="top" aria-label="Présentation">
+      <div>
+        <p class="status"><span class="dot" aria-hidden="true"></span>Disponible pour un stage de fin d'études à partir de fin janvier 2027</p>
+        <h1>Ichroc<br>Fassassi</h1>
+        <p class="role">Élève ingénieur en 5<sup>e</sup> année à l'ESEO Angers, spécialité Cloud, Systèmes et Sécurité.</p>
+        <p class="lede">Je monte des réseaux, je déploie des serveurs, puis je cherche comment les défendre.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Me proposer un stage</a>
+          <a class="btn" href="#soc">Voir mon projet actuel</a>
+        </div>
+      </div>
+
+      <figure class="console" aria-labelledby="console-titre">
+        <div class="console-head">
+          <h2 id="console-titre">Journal de détection</h2>
+          <button class="replay" id="replay" type="button">Rejouer</button>
+        </div>
+        <ol class="log">
+          <li class="log-row" data-stage="q"><time>03:14:02</time><span class="ev">Échec de connexion SSH pour l'utilisateur admin, depuis 203.0.113.42</span><span class="tag">Qualification</span></li>
+          <li class="log-row" data-stage="q"><time>03:14:04</time><span class="ev">Huit échecs en dix secondes depuis la même adresse</span><span class="tag">Qualification</span></li>
+          <li class="log-row" data-stage="q"><time>03:14:04</time><span class="ev">Adresse déjà signalée dans un flux de threat intelligence</span><span class="tag">Qualification</span></li>
+          <li class="log-row is-key" data-stage="d"><time>03:14:05</time><span class="ev">Force brute reconnue : technique T1110 de MITRE ATT&amp;CK</span><span class="tag">Détection</span></li>
+          <li class="log-row is-key" data-stage="r"><time>03:14:06</time><span class="ev">Adresse bloquée sur le pare-feu de la machine</span><span class="tag">Réaction</span></li>
+          <li class="log-row" data-stage="r"><time>03:14:06</time><span class="ev">Incident ouvert pour analyse</span><span class="tag">Réaction</span></li>
+        </ol>
+        <figcaption>Un scénario de démonstration du SOC que nous construisons en projet de fin d'études. 203.0.113.42 est une adresse réservée à la documentation&nbsp;: aucune vraie machine n'est visée.</figcaption>
+      </figure>
+    </section>
+  </div>
+
+  <section id="soc" class="band">
+    <div class="wrap">
+      <h2 class="title">Un SOC open source autour de Wazuh</h2>
+      <div class="intro">
+        <p class="meta">Projet de fin d'études, de septembre 2026 à janvier 2027. Chef de projet d'une équipe de cinq.</p>
+        <p>Un SOC surveille un système d'information et réagit quand quelque chose d'anormal s'y passe. Le nôtre repose sur Wazuh, un SIEM/XDR open source, et traite chaque événement en trois étapes.</p>
+      </div>
+
+      <ol class="pipeline">
+        <li data-stage="q">
+          <span class="step" aria-hidden="true">1</span>
+          <h3>Qualification <span class="mine">Mon rôle</span></h3>
+          <p>Collecter les journaux des machines Linux et Windows, les normaliser, puis les enrichir avec des flux de threat intelligence.</p>
+        </li>
+        <li data-stage="d">
+          <span class="step" aria-hidden="true">2</span>
+          <h3>Détection</h3>
+          <p>Relier les événements aux techniques de MITRE ATT&amp;CK et écrire des règles qui repèrent les comportements suspects.</p>
+        </li>
+        <li data-stage="r">
+          <span class="step" aria-hidden="true">3</span>
+          <h3>Réaction</h3>
+          <p>Déclencher une réponse automatique, comme bloquer une adresse ou désactiver un compte, puis suivre l'incident avec des playbooks.</p>
+        </li>
+      </ol>
+
+      <div class="notes">
+        <div>
+          <h3>Comment j'ai organisé l'équipe</h3>
+          <p>Deux personnes sur la détection, une sur la réaction, une sur la documentation et la qualité. Je garde la qualification en plus du pilotage du projet.</p>
+        </div>
+        <div>
+          <h3>Les outils</h3>
+          <p>Wazuh (manager, indexer, dashboard), agents Linux et Windows, MITRE ATT&amp;CK, flux de threat intelligence. Pistes à l'étude&nbsp;: TheHive et MISP.</p>
+        </div>
+        <div>
+          <h3>Où on en est</h3>
+          <p>En cours de construction. Livraison prévue en janvier 2027.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets" class="band">
+    <div class="wrap">
+      <h2 class="title">Autres projets</h2>
+      <p class="intro">Projets d'école et travaux pratiques, du câblage réseau jusqu'au conteneur.</p>
+
+      <div class="projects">
+        <!-- Quand un projet a son dépôt public, ajoute un lien sous son titre :
+             <p><a href="https://github.com/Ichroc/NOM-DU-DEPOT">Voir le code</a></p> -->
+
+        <article class="project">
+          <p class="p-when">Janvier à juin 2026<span>Projet d'équipe</span></p>
+          <div>
+            <h3>ESEO Teaching Cloud</h3>
+            <p class="p-role">Chef de projet et référent réseau, équipe de cinq</p>
+            <p>Une preuve de concept de plateforme « TP as a Service »&nbsp;: regrouper sur la ferme de serveurs de l'école les machines virtuelles utilisées en travaux pratiques.</p>
+            <ul>
+              <li>Réseau découpé en VLAN, switch Cisco C3560, routage inter-VLAN, DMZ et pare-feu OPNsense</li>
+              <li>Déploiement des machines automatisé avec Vagrant et Ansible</li>
+              <li>Services MariaDB, DNS avec BIND9, supervision avec Nagios</li>
+              <li>Livré en trois incréments, avec 79 tests de validation pour le service Gitea</li>
+            </ul>
+          </div>
+          <p class="p-tools"><b>Outils</b>Cisco IOS, OPNsense, Vagrant, Ansible, VirtualBox, MariaDB, BIND9, Nagios, Gitea</p>
+        </article>
+
+        <article class="project">
+          <p class="p-when">Septembre 2026<span>Lab sécurité</span></p>
+          <div>
+            <h3>Passerelle NAT et rebond SSH</h3>
+            <p>Une machine passerelle protège un serveur qui n'a pas d'accès direct à Internet.</p>
+            <ul>
+              <li>NAT sortant avec iptables, règles rechargées à chaque démarrage par un script</li>
+              <li>Connexion SSH par clé, directe ou par rebond sur la passerelle</li>
+              <li>Tunnels SSH locaux vers le web, MariaDB et FTP, et l'explication de pourquoi le tunnel FTP seul ne suffit pas</li>
+              <li>Une redirection volontairement non chiffrée, pour montrer dans Wireshark ce qu'un attaquant lit en clair</li>
+            </ul>
+          </div>
+          <p class="p-tools"><b>Outils</b>iptables, OpenSSH, Wireshark, VirtualBox, Apache, MariaDB, vsftpd</p>
+        </article>
+
+        <article class="project">
+          <p class="p-when">Septembre 2026<span>TP conteneurs</span></p>
+          <div>
+            <h3>Un serveur web et sa base, en conteneurs</h3>
+            <ul>
+              <li>Serveur web sur Alpine 3.22 avec Apache, PHP et DVWA, une application volontairement vulnérable qui sert à s'entraîner</li>
+              <li>Base MariaDB sur l'image officielle Alpine, jamais exposée sur le réseau</li>
+              <li>Volumes dédiés, mot de passe passé par variable d'environnement</li>
+              <li>Quatre scripts pour tout piloter&nbsp;: build, start, stop, remove</li>
+            </ul>
+          </div>
+          <p class="p-tools"><b>Outils</b>Docker, Alpine Linux, Apache, PHP, MariaDB, Bash</p>
+        </article>
+
+        <article class="project">
+          <p class="p-when">Lab réseau<span>ESEO</span></p>
+          <div>
+            <h3>Réseau multi-sites Paris et Angers</h3>
+            <p>Deux sites configurés de bout en bout sur du matériel Cisco, puis documentés en entier.</p>
+            <ul>
+              <li>VLAN et VTP, routage inter-VLAN, DHCP</li>
+              <li>EIGRP entre les deux sites, NAT/PAT vers Internet</li>
+              <li>Wi-Fi sécurisé en WPA2</li>
+            </ul>
+          </div>
+          <p class="p-tools"><b>Outils</b>Cisco IOS, EIGRP, VTP, NAT/PAT, DHCP, WPA2</p>
+        </article>
+
+        <article class="project">
+          <p class="p-when">En continu<span>Dépôt public</span></p>
+          <div>
+            <h3>Cyber-writeups</h3>
+            <p>Mes notes d'entraînement en cybersécurité, rangées par étapes.</p>
+            <p><a href="https://github.com/Ichroc/Cyber-writeups">Lire les notes sur GitHub</a></p>
+          </div>
+          <p class="p-tools"><b>Organisation</b>Notes classées par phases, avec un dossier d'outils</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences" class="band">
+    <div class="wrap">
+      <h2 class="title">Ce que je sais faire</h2>
+      <div class="skills">
+        <div>
+          <h3>Réseau</h3>
+          <p>Concevoir un plan de VLAN, configurer switchs et routeurs Cisco, filtrer le trafic avec un pare-feu, lire une capture.</p>
+          <p class="tools">Cisco IOS, VLAN et VTP, EIGRP, NAT/PAT, OPNsense, iptables, Wireshark</p>
+        </div>
+        <div>
+          <h3>Sécurité</h3>
+          <p>Collecter et enrichir des journaux, relier une alerte à une technique d'attaque, automatiser une réponse.</p>
+          <p class="tools">Wazuh, MITRE ATT&amp;CK, threat intelligence, réponse active, tunnels SSH</p>
+        </div>
+        <div>
+          <h3>Systèmes</h3>
+          <p>Installer et configurer des services Linux, les superviser, automatiser les tâches répétitives en Bash.</p>
+          <p class="tools">Debian, Alpine, Bash, Apache, MariaDB, BIND9, Nagios, Zabbix</p>
+        </div>
+        <div>
+          <h3>Cloud et DevOps</h3>
+          <p>Conteneuriser une application, décrire une infrastructure sous forme de code, déployer des machines sans clic.</p>
+          <p class="tools">Docker, Ansible, Vagrant, VirtualBox, Kubernetes, Azure, GitLab CI/CD</p>
+        </div>
+        <div>
+          <h3>Gestion de projet</h3>
+          <p>Répartir le travail d'une équipe, livrer par incréments, documenter pour ceux qui reprennent le projet.</p>
+          <p class="tools">Deux projets menés comme chef de projet, MOOC Gestion de projet de Centrale Lille</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parcours" class="band">
+    <div class="wrap split">
+      <div>
+        <h2 class="title">Parcours</h2>
+        <ol class="timeline">
+          <!-- Complète la ligne 2024 : nom complet de la formation et de l'établissement -->
+          <li><span class="when">2024</span><span class="what">IRDW</span></li>
+          <li><span class="when">Janvier à juin 2026</span><span class="what">ESEO Teaching Cloud, chef de projet et référent réseau</span></li>
+          <li><span class="when">Depuis septembre 2026</span><span class="what">5<sup>e</sup> année du cycle ingénieur à l'ESEO, spécialité Cloud, Systèmes et Sécurité, et projet de fin d'études sur le SOC Wazuh</span></li>
+          <li class="next"><span class="when">À partir de fin janvier 2027</span><span class="what">Stage de fin d'études, 17 semaines minimum</span></li>
+        </ol>
+      </div>
+      <div>
+        <h2 class="title">Certifications</h2>
+        <ul class="certs">
+          <li><span class="name">TOEIC, 810 sur 990 (niveau B2)</span><a href="https://github.com/Ichroc/Ichroc/blob/main/certifications/TOEIC_Score_Report_Ichroc_Fassassi.pdf">Voir le relevé de score</a></li>
+          <li><span class="name">CLOE, CCI France</span><a href="https://certificats.candidat-cloe.com/check//F33F910F59EE825BBCF22AA4DFC76A10C5E25BE174D90318004838832F8B49CBMDdISEhUT3dXaE96SVN1YjUxdGhyVCswbmdWeVVSY3d4LzEydFJtcFBYcVVCbFh3">Vérifier le certificat</a></li>
+          <li><span class="name">MOOC Gestion de projet, Centrale Lille</span><a href="https://certification.gestiondeprojet.pm/GdP25AP/GdP25PC-FAFcZuneA.pdf">Voir l'attestation</a></li>
+        </ul>
+        <div class="langs">
+          <h3>Langues</h3>
+          <p>Français (C2), anglais (B2).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="title">Vous recrutez un stagiaire&nbsp;?</h2>
+      <p class="intro">Je cherche un stage de fin d'études de 17 semaines minimum, à partir de fin janvier 2027, en SOC et détection, en audit de sécurité, en réseau et infrastructure, ou en cloud et DevOps. Je suis basé à Angers et ouvert à la mobilité.</p>
+      <p class="mail">
+        <a id="mail" href="mailto:ichroc_fassassi@reseau.eseo.fr">ichroc_fassassi@reseau.eseo.fr</a>
+        <button class="copy" id="copy" type="button">Copier l'adresse</button>
+      </p>
+      <p class="elsewhere">
+        <a href="https://www.linkedin.com/in/ichroc-fassassi">LinkedIn</a>
+        <a href="https://github.com/Ichroc">GitHub</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Ichroc Fassassi. Site hébergé sur GitHub Pages.</div>
+</footer>
+
+<script>
+(function () {
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.log-row'));
+  var replay = document.getElementById('replay');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+
+  function play() {
+    timers.forEach(clearTimeout);
+    timers = [];
+    rows.forEach(function (r) { r.classList.remove('is-shown'); });
+    rows.forEach(function (r, i) {
+      timers.push(setTimeout(function () { r.classList.add('is-shown'); }, 350 + i * 700));
+    });
+  }
+
+  if (reduce) {
+    replay.hidden = true;
+  } else {
+    document.documentElement.classList.add('js-anim');
+    play();
+    replay.addEventListener('click', play);
+  }
+
+  var copy = document.getElementById('copy');
+  var address = 'ichroc_fassassi@reseau.eseo.fr';
+  copy.addEventListener('click', function () {
+    var done = function (msg) {
+      copy.textContent = msg;
+      setTimeout(function () { copy.textContent = "Copier l'adresse"; }, 2500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(address).then(
+        function () { done('Adresse copiée'); },
+        function () { done("Copie impossible, sélectionnez l'adresse"); }
+      );
+    } else {
+      done("Copie impossible, sélectionnez l'adresse");
+    }
+  });
+})();
+</script>
+</body>
+</html>
