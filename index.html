@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ichroc Fassassi, élève ingénieur Cloud, Systèmes et Sécurité</title>
-<meta name="description" content="Élève ingénieur en 5e année à l'ESEO, spécialité Cloud, Systèmes et Sécurité. SOC Wazuh, Kubernetes et Helm, Docker Compose, OpenVPN et PKI. Je cherche un stage de fin d'études à partir de fin janvier 2027.">
+<meta name="description" content="Élève ingénieur en 5e année à l'ESEO, spécialité Cloud, Systèmes et Sécurité. Détection dans un SOC Wazuh, Kubernetes et Helm, Docker, VPN et PKI, assistant IA local. Je cherche un stage de fin d'études à partir de fin janvier 2027.">
 <meta name="author" content="Ichroc Fassassi">
 <meta name="theme-color" content="#0C2747">
 <link rel="canonical" href="https://ichroc.github.io/">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Ichroc Fassassi, élève ingénieur Cloud, Systèmes et Sécurité">
-<meta property="og:description" content="Mes projets assemblés en une infrastructure vivante. Je cherche un stage de fin d'études à partir de fin janvier 2027 : SOC, sécurité, réseau, cloud et DevOps.">
+<meta property="og:description" content="Mes projets assemblés en une infrastructure vivante, que vous pouvez attaquer : le SOC répond. Je cherche un stage de fin d'études à partir de fin janvier 2027 : SOC, sécurité, réseau, cloud et DevOps.">
 <meta property="og:url" content="https://ichroc.github.io/">
 <meta property="og:image" content="https://ichroc.github.io/og.png">
 <meta property="og:image:width" content="1200">
@@ -36,7 +36,7 @@
   "email": "mailto:ichroc_fassassi@reseau.eseo.fr",
   "url": "https://ichroc.github.io/",
   "sameAs": ["https://github.com/Ichroc", "https://www.linkedin.com/in/ichroc-fassassi", "https://tryhackme.com/p/Ichroc7"],
-  "knowsAbout": ["Wazuh", "SIEM", "SOC", "MITRE ATT&CK", "OpenVPN", "PKI", "Kubernetes", "Helm", "Docker", "Docker Compose", "Cisco", "OPNsense", "iptables", "Ansible", "Vagrant", "Linux"],
+  "knowsAbout": ["Wazuh", "SIEM", "SOC", "MITRE ATT&CK", "OpenVPN", "PKI", "Kubernetes", "Helm", "Docker", "Docker Compose", "Cisco", "OPNsense", "iptables", "Ansible", "Vagrant", "Linux", "Python", "Ollama", "Portainer"],
   "knowsLanguage": ["fr", "en"]
 }
 </script>
@@ -117,7 +117,7 @@ ul, ol { margin: 0; padding: 0; }
 /* ============ Ouverture ============ */
 .hero {
   position: relative; overflow: hidden; display: flex;
-  min-height: 100vh; min-height: max(100svh, 44rem);
+  min-height: 100vh; min-height: max(100svh, 47rem);
   color: var(--on-night);
   background: radial-gradient(120% 95% at 66% 44%, #1B4677 0%, #0E2B4F 44%, var(--night) 100%);
 }
@@ -126,8 +126,8 @@ ul, ol { margin: 0; padding: 0; }
 .sheet-lines::before { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(255, 255, 255, .07); }
 .hero-grid {
   position: relative; z-index: 2; flex: 1;
-  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.55fr); grid-template-rows: minmax(0, 1fr) auto auto;
-  grid-template-areas: "text stage" "text rep" "foot foot";
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, .42fr) minmax(0, 1.13fr); grid-template-rows: minmax(0, 1fr) auto auto;
+  grid-template-areas: "text stage stage" "text rep rep" "foot foot con";
   column-gap: clamp(1rem, 3vw, 3rem); row-gap: 0;
   padding-top: calc(4.25rem + clamp(1rem, 4vh, 3.25rem)); padding-bottom: clamp(1.5rem, 3.6vh, 2.6rem);
   pointer-events: none;
@@ -145,7 +145,7 @@ ul, ol { margin: 0; padding: 0; }
 .btn-solid { background: var(--on-night); color: var(--deep); }
 .btn-solid:hover { background: #FFFFFF; }
 
-.stage { grid-area: stage; position: relative; min-height: 22rem; }
+.stage { grid-area: stage; position: relative; min-height: 19rem; }
 .stage-fallback { display: none; }
 .no-js .stage-fallback { display: block; list-style: none; pointer-events: auto; padding-top: 2rem; color: var(--on-night-soft); }
 .no-js .stage-fallback li { margin-bottom: .3rem; }
@@ -197,7 +197,7 @@ a.tag:focus-visible { outline: 2px solid #FFD27A; outline-offset: 2px; }
 }
 @media (max-width: 900px) {
   .hero { min-height: 0; }
-  .hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "text" "stage" "rep" "foot"; padding-top: 5.4rem; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "text" "stage" "con" "rep" "foot"; padding-top: 5.4rem; }
   .hero-text { padding-bottom: 0; }
   .stage { min-height: 0; height: clamp(23rem, 112vw, 36rem); }
   .cartouche { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -229,7 +229,7 @@ a.tag:focus-visible { outline: 2px solid #FFD27A; outline-offset: 2px; }
 .reperes li > .n { margin-right: .45em; }
 /* Sur téléphone : nom, accroche, plan, repères, puis les boutons */
 @media (max-width: 660px) {
-  .hero-grid { grid-template-areas: "name" "role" "acts" "stage" "rep" "actions" "foot"; }
+  .hero-grid { grid-template-areas: "name" "role" "acts" "stage" "con" "rep" "actions" "foot"; }
   .hero-text { display: contents; }
   .hero h1 { grid-area: name; }
   .role { grid-area: role; }
@@ -248,93 +248,21 @@ h2.title { font-size: clamp(2.3rem, 4.8vw, 3.6rem); line-height: 1.06; letter-sp
 .profile { padding-bottom: clamp(3rem, 7vw, 5rem); }
 .lead { font-size: clamp(1.55rem, 2.65vw, 2.3rem); line-height: 1.36; max-width: 29em; margin: 0; letter-spacing: -.005em; }
 
-/* SOC : le trajet d'une alerte */
-.journey { position: relative; margin: 3.2rem 0 1rem; }
-.journey .track { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--rule); }
-.journey .fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--muted), var(--q) 33%, var(--d) 62%, var(--r)); transform-origin: left center; }
-.journey .dot { position: absolute; top: -5px; left: 100%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--r); box-shadow: 0 0 0 5px rgba(30, 122, 87, .16); }
-.stages { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding-top: 1.8rem; }
-.stages li { position: relative; display: flex; flex-direction: column; }
-.stages li::before { content: ""; position: absolute; top: calc(-1.8rem - 5px); left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--stage, var(--muted)); }
-.stages li[data-stage="q"] { --stage: var(--q); }
-.stages li[data-stage="d"] { --stage: var(--d); }
-.stages li[data-stage="r"] { --stage: var(--r); }
-.stages .step { display: block; font-size: 2.3rem; line-height: 1; font-style: italic; color: var(--stage); margin-bottom: .2rem; }
-.stages .step.none { color: var(--muted); }
-.stages h3 { font-size: 1.5rem; line-height: 1.2; margin-bottom: .45rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .3em .6em; }
-.stages .def { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 1rem; flex: 1; }
-.evt { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-left: 3px solid var(--stage, var(--muted)); padding: .75rem .95rem; font-style: italic; font-size: 1.04rem; line-height: 1.45; }
-.mine { font-size: .92rem; font-style: italic; color: var(--sheet); background: var(--q); border-radius: 999px; padding: .06em .75em; white-space: nowrap; }
-.journey.armed .fill { transform: scaleX(0); }
-.journey.armed .dot { left: 0; opacity: 0; }
-.journey.armed .evt { opacity: .2; transform: translateY(8px); }
-.journey.play .fill { transform: scaleX(1); transition: transform 3s cubic-bezier(.45, 0, .3, 1); }
-.journey.play .dot { left: 100%; opacity: 1; transition: left 3s cubic-bezier(.45, 0, .3, 1), opacity .3s; }
-.journey.play .evt { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
-.journey.play li:nth-child(2) .evt { transition-delay: .85s; }
-.journey.play li:nth-child(3) .evt { transition-delay: 1.7s; }
-.journey.play li:nth-child(4) .evt { transition-delay: 2.55s; }
-.journey-note { font-size: 1.02rem; font-style: italic; color: var(--muted); margin: 1.4rem 0 3.4rem; }
-@media (max-width: 900px) {
-  .stages { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; padding: 0 0 0 1.9rem; }
-  .stages li::before { top: .45rem; left: -1.9rem; }
-  .journey .track { left: 5px; right: auto; top: .9rem; bottom: .9rem; width: 2px; height: auto; }
-  .journey .fill { background: linear-gradient(180deg, var(--muted), var(--q) 33%, var(--d) 62%, var(--r)); transform-origin: center top; }
-  .journey .dot { top: 100%; left: -5px; margin: -6px 0 0 0; }
-  .journey.armed .fill { transform: scaleY(0); }
-  .journey.armed .dot { top: 0; left: -5px; }
-  .journey.play .fill { transform: scaleY(1); }
-  .journey.play .dot { top: 100%; left: -5px; transition: top 3s cubic-bezier(.45, 0, .3, 1), opacity .3s; }
-}
-
-.soc-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2.5rem 4rem; }
-@media (max-width: 900px) { .soc-grid { grid-template-columns: minmax(0, 1fr); } }
-.soc-grid h3 { font-size: 1.35rem; margin-bottom: .9rem; }
-.team { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; }
-.team li { text-align: center; font-size: 1rem; line-height: 1.3; color: var(--ink-soft); }
-.team .who { display: block; width: 3.1rem; height: 3.1rem; margin: 0 auto .55rem; border-radius: 50%; border: 2px solid var(--stage, var(--ink)); }
-.team li[data-stage="q"] { --stage: var(--q); }
-.team li[data-stage="d"] { --stage: var(--d); }
-.team li[data-stage="r"] { --stage: var(--r); }
-.team li.me .who { background: var(--q); box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--q); }
-.team li.me { color: var(--ink); }
-.team em { display: block; color: var(--muted); }
-@media (max-width: 560px) { .team { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.4rem; } }
-.facts { display: grid; gap: 1.1rem; }
-.facts p { margin: 0; }
-.facts b { display: block; font-weight: 400; font-style: italic; color: var(--muted); font-size: 1.02rem; }
 
 /* Projets */
-.filters { display: flex; flex-wrap: wrap; gap: .55rem; margin: 2.2rem 0 0; }
-.filters[hidden] { display: none; }
-.chip { font: inherit; font-size: 1.04rem; line-height: 1.3; color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 999px; padding: .32em 1em; cursor: pointer; }
-.chip:hover { border-color: var(--ink); }
-.chip .n { font-style: italic; color: var(--muted); margin-left: .35em; }
-.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--sheet); }
-.chip[aria-pressed="true"] .n { color: inherit; opacity: .75; }
 
 .sheets { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.6rem; }
 .sheet { grid-column: span 6; display: flex; flex-direction: column; background: var(--sheet); border: 1px solid var(--rule); scroll-margin-top: 5.5rem; }
 .sheet[hidden] { display: none; }
-.sheet.wide { grid-column: span 12; }
 .sheet.small { grid-column: span 4; }
 @media (max-width: 1000px) { .sheet.small { grid-column: span 6; } }
 @media (max-width: 760px) { .sheet, .sheet.small { grid-column: span 12; } }
 .sheet-body { padding: 1.6rem 1.8rem 1.4rem; flex: 1; }
-.sheet.wide .sheet-body { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1rem 3rem; }
-@media (max-width: 900px) { .sheet.wide .sheet-body { grid-template-columns: minmax(0, 1fr); } }
-.sheet-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-.glyph { flex: none; width: 108px; height: 80px; margin: -.5rem -.7rem -.2rem 0; }
-.sheet.wide .glyph { width: 150px; height: 110px; }
-.no-js .glyph { display: none; }
 @media (max-width: 560px) {
   .sheet-body { padding: 1.3rem 1.25rem 1.2rem; }
   .cart div:first-child, .cart div, .sheet.small .cart div, .sheet.small .cart div:first-child { padding-left: 1.25rem; }
-  .glyph, .sheet.wide .glyph { width: 78px; height: 60px; margin: -.3rem -.4rem 0 0; }
-  .sheet.wide h3 { font-size: 1.72rem; }
 }
 .sheet h3 { font-size: 1.72rem; line-height: 1.15; margin-bottom: .5rem; }
-.sheet.wide h3 { font-size: clamp(1.9rem, 3vw, 2.4rem); }
 .sheet .role { color: var(--muted); font-style: italic; margin-bottom: .6rem; }
 .sheet .pitch { color: var(--ink-soft); }
 .points { list-style: none; margin-bottom: 1rem; }
@@ -419,10 +347,107 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
 .elsewhere { display: flex; flex-wrap: wrap; gap: 1.6rem; font-size: 1.2rem; margin: 0; }
 .foot { margin-top: clamp(3.5rem, 7vw, 5rem); padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, .2); color: var(--on-night-soft); font-size: 1rem; }
 
+/* ============ Console : le visiteur attaque, le SOC répond ============ */
+.console {
+  grid-area: con; pointer-events: auto; align-self: end;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: .6rem;
+  margin-top: 1.2rem; padding: .7rem 1rem .8rem;
+  border: 1px solid rgba(255, 255, 255, .22); background: rgba(6, 22, 41, .5);
+  -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+}
+.scn { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem; }
+.scn-lead { flex-basis: 100%; font-style: italic; font-size: .95rem; line-height: 1.3; color: var(--on-night-soft); }
+.scn-b { font: inherit; font-size: .95rem; line-height: 1.25; color: var(--on-night); background: rgba(6, 22, 41, .35); border: 1px solid rgba(255, 255, 255, .38); border-radius: 999px; padding: .17em .95em .2em; cursor: pointer; white-space: nowrap; }
+.scn-b:hover { border-color: var(--on-night); }
+.scn-b[aria-pressed="true"] { background: var(--coral); border-color: var(--coral); color: #2B0E0A; }
+.no-js .scn { display: none; }
+.feed { list-style: none; display: grid; gap: .16rem; font-size: .98rem; line-height: 1.4; min-width: 0; }
+.feed li { display: grid; grid-template-columns: 4.7em minmax(0, 1fr); gap: .7em; }
+.feed b { font-weight: 400; font-style: italic; color: var(--on-night-soft); }
+.feed span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.feed li.ok span { color: var(--mint); }
+.js .feed li { opacity: .34; transition: opacity .45s ease; }
+.js .feed li span { opacity: 0; transition: opacity .45s ease; }
+.js .feed li.on, .js .feed li.on span { opacity: 1; }
+.tag .st.ok { color: var(--mint); }
+.hero-foot { grid-template-columns: minmax(0, 1fr); gap: .6rem; align-self: end; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1.3rem; }
+.legend ul { display: flex; flex-wrap: wrap; gap: .15rem 1.2rem; margin: 0; }
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hero-grid { grid-template-areas: "text stage stage" "con con con" "rep rep rep" "foot foot foot"; }
+}
+@media (max-width: 600px) {
+  .console { padding: .65rem .8rem .7rem; }
+  .scn-b { font-size: .9rem; padding: .17em .75em .2em; }
+  .feed { font-size: .88rem; }
+  .feed li { grid-template-columns: 4.6em minmax(0, 1fr); gap: .5em; min-height: 2.5em; }
+  .feed span { white-space: normal; }
+}
+
+/* ============ La visite : le plan suit la lecture ============ */
+.tour { background: var(--paper); border-top: 1px solid var(--rule); }
+.tour-head { padding-top: clamp(4rem, 9vw, 7rem); padding-bottom: clamp(2.2rem, 5vw, 3.6rem); }
+.tour-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); border-top: 1px solid var(--rule); }
+.tour-view {
+  position: sticky; top: 0; align-self: start; overflow: hidden;
+  height: 100vh; height: 100svh; color: var(--on-night);
+  background: radial-gradient(115% 95% at 50% 46%, #1B4677 0%, #0E2B4F 46%, var(--night) 100%);
+}
+.tour-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.tour-cap { position: absolute; left: clamp(1.5rem, 3vw, 2.6rem); bottom: clamp(1.4rem, 3.4vh, 2.4rem); margin: 0; line-height: 1.2; text-shadow: 0 0 10px rgba(6, 22, 41, .95); pointer-events: none; }
+.tour-cap .n { display: block; font-style: italic; font-size: 1rem; color: var(--on-night-soft); margin-bottom: .15rem; }
+.tour-cap .t { display: block; font-size: clamp(1.5rem, 2.5vw, 2.2rem); letter-spacing: -.01em; }
+.tour-dots { position: absolute; right: clamp(1.3rem, 3vw, 2.4rem); bottom: clamp(1.3rem, 3.2vh, 2.2rem); display: flex; }
+.tour-dots a { display: grid; place-items: center; width: 1.35rem; height: 1.6rem; }
+.tour-dots a::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; border: 1px solid rgba(235, 243, 255, .75); }
+.tour-dots a:hover::before { background: rgba(235, 243, 255, .5); }
+.tour-dots a[aria-current="true"]::before { background: var(--on-night); box-shadow: 0 0 0 3px rgba(235, 243, 255, .2); }
+.tour-text { max-width: 46rem; padding: 0 clamp(1.1rem, 4vw, 3.6rem) clamp(2rem, 6vh, 4rem) clamp(1.5rem, 4.2vw, 3.8rem); }
+.chapter { display: flex; flex-direction: column; justify-content: center; min-height: 78vh; padding: clamp(2.8rem, 8vh, 5rem) 0; border-top: 1px solid var(--rule); scroll-margin-top: 4.2rem; }
+.chapter:first-child { border-top: 0; }
+.chapter h3 { font-size: clamp(1.95rem, 3.1vw, 2.6rem); line-height: 1.1; letter-spacing: -.012em; margin-bottom: .55rem; }
+.chapter .role { color: var(--muted); font-style: italic; font-size: 1.12rem; margin-bottom: .7rem; max-width: none; }
+.chapter .pitch { color: var(--ink-soft); }
+.chapter .points a, .chapter .cart a { color: var(--q); }
+.chapter .cart { margin-top: 1.4rem; border: 1px solid var(--rule); background: var(--sheet); }
+.chapter .cart div:first-child { padding-left: .9rem; }
+.chapter:target h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .16em; text-decoration-color: var(--q); }
+@media (min-width: 901px) {
+  .js .tour.live .chapter { opacity: .34; transition: opacity .5s ease; }
+  .js .tour.live .chapter.active, .js .tour.live .chapter:focus-within { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .js .tour.live .chapter, .js .feed li, .js .feed li span { transition: none; } }
+.no-js .tour-view { display: none; }
+.no-js .tour-grid { grid-template-columns: minmax(0, 1fr); }
+.no-js .chapter { min-height: 0; }
+@media (max-width: 900px) {
+  .tour-grid { grid-template-columns: minmax(0, 1fr); }
+  .tour-view { top: 4rem; height: 40vh; height: 40svh; min-height: 15rem; z-index: 5; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+  .tour-view .sheet-lines { display: none; }
+  .tour-cap { left: 1.1rem; bottom: .8rem; }
+  .tour-cap .n { font-size: .88rem; }
+  .tour-cap .t { font-size: 1.3rem; }
+  .tour-dots { right: .7rem; bottom: .55rem; }
+  .tour-dots a { width: 1.1rem; }
+  .tour-text { max-width: none; padding: 0 clamp(1.1rem, 4vw, 3rem) 2rem; }
+  .chapter { min-height: 0; padding: 2.6rem 0; scroll-margin-top: calc(4rem + max(40svh, 15rem) + .6rem); }
+}
+@media (max-width: 560px) {
+  .chapter .cart div, .chapter .cart div:first-child { padding-left: .9rem; }
+}
+
+.side { padding-top: clamp(3rem, 7vw, 5rem); padding-bottom: clamp(4rem, 9vw, 7rem); border-top: 1px solid var(--rule); }
+.side > h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.15; }
+.sheet h4 { font-size: 1.6rem; line-height: 1.15; font-weight: 400; margin: 0 0 .5rem; }
 /* ============ Impression ============ */
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; }
-  .site-head, .scene, .tags, .legend, .actions, .filters, .copy, .sheet-lines, .rings, .glyph { display: none !important; }
+  .site-head, .scene, .tags, .legend, .actions, .scn, .copy, .sheet-lines, .rings, .tour-view { display: none !important; }
+  .tour-grid { display: block; }
+  .chapter { min-height: 0; break-inside: avoid; opacity: 1 !important; }
+  .console { background: none; border-color: #999; }
+  .feed li, .feed li span { opacity: 1 !important; color: #000; }
+  .feed b { color: #444; }
   .hero, .contact { background: #fff; color: #000; min-height: 0; }
   .hero-grid { padding-top: 0; }
   .stage { display: none; }
@@ -433,8 +458,6 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   .cartouche dt { color: #444; }
   .cartouche .avail dd { color: #000; }
   .sheet { break-inside: avoid; }
-  .sheet[hidden] { display: flex !important; }
-  .journey.armed .evt { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -458,7 +481,7 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
 
   <!-- ================= OUVERTURE ================= -->
   <section class="hero" id="top" aria-label="Présentation">
-    <canvas class="scene" id="scene" role="img" aria-label="Mes projets assemblés en une infrastructure en trois dimensions. Une attaque simulée arrive d'Internet, le SOC la repère et un pare-feu la bloque."></canvas>
+    <canvas class="scene" id="scene" role="img" aria-label="Mes projets assemblés en une infrastructure en trois dimensions. Une machine d'attaque lance une attaque simulée, le SOC la repère et la bloque."></canvas>
     <div class="sheet-lines" aria-hidden="true"></div>
 
     <div class="hero-grid wrap">
@@ -468,32 +491,52 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
         <p class="acts"><span class="act">Je dessine des infrastructures,</span> <span class="act">je les construis,</span> <span class="act">puis je les défends.</span></p>
         <div class="actions">
           <a class="btn btn-solid" href="#contact">Me proposer un stage</a>
-          <a class="btn" href="#projets">Voir les projets</a>
+          <a class="btn" href="#projets">Visiter les projets</a>
         </div>
       </div>
 
       <div class="stage" id="stage">
         <ul class="stage-fallback">
-          <li><a href="#p-neon">Cluster Kubernetes : Neon Snake</a></li>
-          <li><a href="#p-compose">Stack Docker Compose : infrastructure DVWA</a></li>
-          <li><a href="#p-vpn">Poste client et serveur isolé : VPN et PKI</a></li>
-          <li><a href="#p-nat">Passerelle : NAT et rebond SSH</a></li>
           <li><a href="#soc">SOC Wazuh : projet de fin d'études</a></li>
+          <li><a href="#p-jarvis">Jarvis : assistant IA local</a></li>
+          <li><a href="#p-neon">Cluster Kubernetes : Neon Snake</a></li>
+          <li><a href="#p-vpn">Poste client et serveur isolé : VPN et PKI</a></li>
+          <li><a href="#p-compose">Stack Docker Compose : infrastructure DVWA</a></li>
+          <li><a href="#p-nat">Passerelle : NAT et rebond SSH</a></li>
+          <li><a href="#p-writeups">Machine d'attaque : Cyber-writeups</a></li>
           <li><a href="#p-tpaas">Ferme de VM : Teaching Cloud</a></li>
           <li><a href="#p-cisco">Cœur réseau Cisco : réseau multi-sites</a></li>
         </ul>
       </div>
 
+      <!-- La console : le visiteur choisit l'attaque, le SOC répond -->
+      <div class="console" id="console">
+        <div class="scn" role="group" aria-label="Choisir une attaque simulée">
+          <span class="scn-lead">Lancez une attaque simulée, le SOC répond</span>
+          <button class="scn-b" type="button" data-scn="ssh" aria-pressed="true">Force brute SSH</button>
+          <button class="scn-b" type="button" data-scn="web" aria-pressed="false">Injection SQL</button>
+          <button class="scn-b" type="button" data-scn="priv" aria-pressed="false">Élévation de privilèges</button>
+        </div>
+        <ol class="feed" id="feed" aria-label="Ce que voit le SOC, étape par étape">
+          <li class="on"><b>Journal</b><span>sshd : mot de passe refusé pour admin</span></li>
+          <li class="on"><b>Règle</b><span>8 échecs en 10 s : force brute, niveau 10</span></li>
+          <li class="on"><b>MITRE</b><span>T1110, Brute Force</span></li>
+          <li class="on ok"><b>Réaction</b><span>203.0.113.42 bloquée sur le pare-feu</span></li>
+        </ol>
+      </div>
+
       <ol class="reperes" aria-label="Repères du plan">
         <li><span class="n">1</span>Internet</li>
-        <li><a href="#p-vpn"><span class="n">2</span>Poste client, VPN et PKI</a></li>
-        <li><a href="#p-nat"><span class="n">3</span>Passerelle, NAT et rebond SSH</a></li>
-        <li><a href="#soc"><span class="n">4</span>SOC Wazuh, projet de fin d'études</a></li>
-        <li><a href="#p-cisco"><span class="n">5</span>Cœur réseau Cisco, multi-sites</a></li>
-        <li><a href="#p-neon"><span class="n">6</span>Cluster Kubernetes, Neon Snake</a></li>
-        <li><a href="#p-compose"><span class="n">7</span>Stack Docker Compose, DVWA</a></li>
-        <li><a href="#p-tpaas"><span class="n">8</span>Ferme de VM, Teaching Cloud</a></li>
-        <li><a href="#p-vpn"><span class="n">9</span>Serveur isolé, VPN et PKI</a></li>
+        <li><a href="#p-writeups"><span class="n">2</span>Machine d'attaque, Cyber-writeups</a></li>
+        <li><a href="#p-vpn"><span class="n">3</span>Poste client, VPN et PKI</a></li>
+        <li><a href="#p-nat"><span class="n">4</span>Passerelle, NAT et rebond SSH</a></li>
+        <li><a href="#soc"><span class="n">5</span>SOC Wazuh, projet de fin d'études</a></li>
+        <li><a href="#p-cisco"><span class="n">6</span>Cœur réseau Cisco, multi-sites</a></li>
+        <li><a href="#p-neon"><span class="n">7</span>Cluster Kubernetes, Neon Snake</a></li>
+        <li><a href="#p-compose"><span class="n">8</span>Stack Docker Compose, DVWA</a></li>
+        <li><a href="#p-tpaas"><span class="n">9</span>Ferme de VM, Teaching Cloud</a></li>
+        <li><a href="#p-vpn"><span class="n">10</span>Serveur isolé, VPN et PKI</a></li>
+        <li><a href="#p-jarvis"><span class="n">11</span>Jarvis, assistant IA local</a></li>
       </ol>
 
       <div class="hero-foot">
@@ -505,7 +548,6 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           <div><dt>Langues</dt><dd>Français C2, anglais B2</dd></div>
         </dl>
         <div class="legend">
-          <p>Mes projets, assemblés en une seule infrastructure. Chaque machine mène à son projet.</p>
           <ul>
             <li><span class="k" aria-hidden="true"></span>Trafic</li>
             <li><span class="k k-tun" aria-hidden="true"></span>Tunnel chiffré</li>
@@ -519,206 +561,63 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
 
     <div class="tags" id="tags" role="group" aria-label="Machines du plan, chacune mène à son projet">
       <span class="tag" data-node="internet"><span class="num" aria-hidden="true">1</span><span class="t">Internet</span></span>
-      <a class="tag" data-node="client" href="#p-vpn"><span class="num" aria-hidden="true">2</span><span class="t">Poste client</span><span class="s">VPN et PKI</span></a>
-      <a class="tag" data-node="gw" href="#p-nat"><span class="num" aria-hidden="true">3</span><span class="t">Passerelle</span><span class="s">NAT et rebond SSH</span></a>
-      <a class="tag" data-node="soc" href="#soc"><span class="num" aria-hidden="true">4</span><span class="t">SOC Wazuh</span><span class="s">Projet de fin d'études</span><span class="st" id="soc-status"></span></a>
-      <a class="tag" data-node="sw" href="#p-cisco"><span class="num" aria-hidden="true">5</span><span class="t">Cœur réseau Cisco</span><span class="s">Réseau multi-sites</span></a>
-      <a class="tag" data-node="k8s" href="#p-neon"><span class="num" aria-hidden="true">6</span><span class="t">Cluster Kubernetes</span><span class="s">Neon Snake</span></a>
-      <a class="tag" data-node="compose" href="#p-compose"><span class="num" aria-hidden="true">7</span><span class="t">Stack Docker Compose</span><span class="s">Infrastructure DVWA</span></a>
-      <a class="tag" data-node="farm" href="#p-tpaas"><span class="num" aria-hidden="true">8</span><span class="t">Ferme de VM</span><span class="s">Teaching Cloud</span></a>
-      <a class="tag" data-node="srv" href="#p-vpn"><span class="num" aria-hidden="true">9</span><span class="t">Serveur isolé</span><span class="s">VPN et PKI</span></a>
-      <span class="tag note" data-node="wall" aria-hidden="true">Bloqué<span class="ip"> : 203.0.113.42</span></span>
+      <a class="tag" data-node="kali" href="#p-writeups"><span class="num" aria-hidden="true">2</span><span class="t">Machine d'attaque</span><span class="s">Cyber-writeups</span></a>
+      <a class="tag" data-node="client" href="#p-vpn"><span class="num" aria-hidden="true">3</span><span class="t">Poste client</span><span class="s">VPN et PKI</span></a>
+      <a class="tag" data-node="gw" href="#p-nat"><span class="num" aria-hidden="true">4</span><span class="t">Passerelle</span><span class="s">NAT et rebond SSH</span></a>
+      <a class="tag" data-node="soc" href="#soc"><span class="num" aria-hidden="true">5</span><span class="t">SOC Wazuh</span><span class="s">Projet de fin d'études</span><span class="st" id="soc-status"></span></a>
+      <a class="tag" data-node="sw" href="#p-cisco"><span class="num" aria-hidden="true">6</span><span class="t">Cœur réseau Cisco</span><span class="s">Réseau multi-sites</span></a>
+      <a class="tag" data-node="k8s" href="#p-neon"><span class="num" aria-hidden="true">7</span><span class="t">Cluster Kubernetes</span><span class="s">Neon Snake</span></a>
+      <a class="tag" data-node="compose" href="#p-compose"><span class="num" aria-hidden="true">8</span><span class="t">Stack Docker Compose</span><span class="s">Infrastructure DVWA</span></a>
+      <a class="tag" data-node="farm" href="#p-tpaas"><span class="num" aria-hidden="true">9</span><span class="t">Ferme de VM</span><span class="s">Teaching Cloud</span><span class="st ok" id="farm-status"></span></a>
+      <a class="tag" data-node="srv" href="#p-vpn"><span class="num" aria-hidden="true">10</span><span class="t">Serveur isolé</span><span class="s">VPN et PKI</span></a>
+      <a class="tag" data-node="jarvis" href="#p-jarvis"><span class="num" aria-hidden="true">11</span><span class="t">Jarvis</span><span class="s">Assistant IA local</span></a>
+      <span class="tag note" data-node="wall" aria-hidden="true">Bloqué</span>
     </div>
   </section>
 
   <!-- ================= PROFIL ================= -->
   <section class="sec profile" aria-label="Profil">
     <div class="wrap">
-      <p class="lead">Je suis en dernière année d'école d'ingénieur à l'ESEO, en spécialité Cloud, Systèmes et Sécurité. En ce moment, je pilote une équipe de cinq sur un SOC open source. Cet automne, j'ai publié trois projets d'infrastructure en open source&nbsp;: un cluster Kubernetes avec Helm, une stack Docker Compose et un VPN avec sa PKI. Je cherche un stage de fin d'études à partir de fin janvier 2027.</p>
+      <p class="lead">Je suis en dernière année d'école d'ingénieur à l'ESEO, en spécialité Cloud, Systèmes et Sécurité. Pour mon projet de fin d'études, je travaille sur la détection d'un SOC open source&nbsp;: je rejoue des attaques dans un environnement isolé et je vérifie que le SOC les voit. À côté, je publie mes projets d'infrastructure et je construis Jarvis, un assistant vocal qui tourne entièrement en local. Je cherche un stage de fin d'études à partir de fin janvier 2027.</p>
     </div>
   </section>
 
-  <!-- ================= PROJET DE FIN D'ÉTUDES ================= -->
-  <section class="sec" id="soc">
-    <div class="wrap">
-      <h2 class="title">Mon projet de fin d'études&nbsp;: un SOC open source autour de Wazuh</h2>
-      <p class="intro">Un SOC surveille un système d'information et réagit quand quelque chose d'anormal s'y passe. Le nôtre repose sur Wazuh, un SIEM/XDR open source. Voici le trajet d'une alerte, de la ligne de journal jusqu'au blocage.</p>
+  <!-- ================= PROJETS : LA VISITE ================= -->
+  <section class="tour" id="projets">
+    <div class="wrap tour-head">
+      <h2 class="title">Neuf projets, une seule infrastructure</h2>
+      <p class="intro">Faites défiler&nbsp;: le plan se déplace d'une machine à l'autre, et chaque machine raconte son projet. Cinq ont leur code public sur GitHub, et chaque dépôt explique comment tout relancer.</p>
+    </div>
 
-      <div class="journey" id="journey">
-        <div class="track" aria-hidden="true"><span class="fill"></span><span class="dot"></span></div>
-        <ol class="stages">
-          <li>
-            <span class="step none" aria-hidden="true">0</span>
-            <h3>Ce que reçoit le SOC</h3>
-            <p class="def">Un journal brut, envoyé par l'agent Wazuh installé sur une machine.</p>
-            <p class="evt">sshd&nbsp;: échec du mot de passe pour admin depuis 203.0.113.42</p>
-          </li>
-          <li data-stage="q">
-            <span class="step" aria-hidden="true">1</span>
-            <h3>Qualification <span class="mine">Mon rôle</span></h3>
-            <p class="def">Normaliser les journaux et les enrichir avec des flux de threat intelligence.</p>
-            <p class="evt">Authentification SSH échouée, huit fois en dix secondes. Adresse déjà signalée dans un flux de threat intelligence.</p>
-          </li>
-          <li data-stage="d">
-            <span class="step" aria-hidden="true">2</span>
-            <h3>Détection</h3>
-            <p class="def">Relier les événements aux techniques de MITRE ATT&amp;CK et repérer les comportements suspects.</p>
-            <p class="evt">Règle déclenchée&nbsp;: force brute, technique T1110 de MITRE ATT&amp;CK.</p>
-          </li>
-          <li data-stage="r">
-            <span class="step" aria-hidden="true">3</span>
-            <h3>Réaction</h3>
-            <p class="def">Répondre automatiquement, puis suivre l'incident avec des playbooks.</p>
-            <p class="evt">Adresse bloquée sur le pare-feu. Incident ouvert pour analyse.</p>
-          </li>
-        </ol>
+    <div class="tour-grid">
+      <div class="tour-view" id="tour-view">
+        <canvas id="tour-scene" aria-hidden="true"></canvas>
+        <div class="sheet-lines" aria-hidden="true"></div>
+        <p class="tour-cap" aria-hidden="true"><span class="n"><span id="tour-n">1</span> sur 9</span><span class="t" id="tour-t">SOC Wazuh</span></p>
+        <nav class="tour-dots" id="tour-dots" aria-label="Aller à un projet"></nav>
       </div>
-      <p class="journey-note">Le trajet d'une alerte, sur l'exemple simulé du plan d'ouverture. 203.0.113.42 est une adresse réservée à la documentation&nbsp;: aucune vraie machine n'est visée.</p>
 
-      <div class="soc-grid">
-        <div>
-          <h3>Une équipe de cinq, que je pilote</h3>
-          <ul class="team">
-            <li class="me" data-stage="q"><span class="who" aria-hidden="true"></span>Moi<em>Chef de projet et qualification</em></li>
-            <li data-stage="d"><span class="who" aria-hidden="true"></span>Détection</li>
-            <li data-stage="d"><span class="who" aria-hidden="true"></span>Détection</li>
-            <li data-stage="r"><span class="who" aria-hidden="true"></span>Réaction</li>
-            <li><span class="who" aria-hidden="true"></span>Documentation et qualité</li>
+      <div class="tour-text">
+
+        <article class="chapter" id="soc" data-node="soc" data-lit="soc" data-yaw="30" data-name="SOC Wazuh">
+          <h3>Un SOC open source autour de Wazuh</h3>
+          <p class="role">Projet de fin d'études, en équipe de cinq. Je travaille sur la détection.</p>
+          <p class="pitch">Un SOC surveille un système d'information et réagit quand quelque chose d'anormal s'y passe. Le nôtre repose sur Wazuh, un SIEM/XDR open source. Mon travail&nbsp;: rejouer des attaques dans un environnement isolé, et vérifier que le SOC les voit.</p>
+          <ul class="points">
+            <li>Chaque scénario d'attaque est une stack de conteneurs déployée sur Portainer&nbsp;: une cible équipée d'un agent Wazuh, et un conteneur qui l'attaque</li>
+            <li>Premier scénario déployé&nbsp;: force brute SSH, avec deux niveaux d'alerte, un pour la tentative et un plus grave pour la connexion réussie</li>
+            <li>Règles de détection personnalisées, reliées aux techniques de MITRE ATT&amp;CK</li>
+            <li>En préparation&nbsp;: une attaque web sur DVWA et une élévation de privilèges sous Linux</li>
           </ul>
-        </div>
-        <div class="facts">
-          <p><b>Période</b>Septembre 2026 à janvier 2027</p>
-          <p><b>Outils</b>Wazuh (manager, indexer, dashboard), agents Linux et Windows, MITRE ATT&amp;CK, flux de threat intelligence. Pistes à l'étude&nbsp;: TheHive et MISP.</p>
-          <p><b>Où on en est</b>En construction, livraison prévue en janvier 2027.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PROJETS ================= -->
-  <section class="sec" id="projets">
-    <div class="wrap">
-      <h2 class="title">Projets</h2>
-      <p class="intro">Projets d'école, projets d'équipe et projets personnels. Quatre ont leur code public sur GitHub, et chaque dépôt explique comment tout relancer.</p>
-
-      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets par domaine" hidden>
-        <button class="chip" type="button" data-filter="tous" aria-pressed="true">Tous<span class="n"></span></button>
-        <button class="chip" type="button" data-filter="securite" aria-pressed="false">Sécurité<span class="n"></span></button>
-        <button class="chip" type="button" data-filter="cloud" aria-pressed="false">Cloud et DevOps<span class="n"></span></button>
-        <button class="chip" type="button" data-filter="reseau" aria-pressed="false">Réseau<span class="n"></span></button>
-        <button class="chip" type="button" data-filter="perso" aria-pressed="false">Projets personnels<span class="n"></span></button>
-      </div>
-      <p class="sr" id="shown" aria-live="polite"></p>
-
-      <div class="sheets" id="sheets">
-
-        <article class="sheet wide" id="p-neon" data-tags="cloud">
-          <div class="sheet-body">
-            <div>
-              <div class="sheet-head">
-                <h3>Neon Snake, un jeu déployé sur Kubernetes avec Helm</h3>
-                <canvas class="glyph" data-node="k8s" aria-hidden="true"></canvas>
-              </div>
-              <p class="pitch">Un jeu Snake servi par Apache, sur un cluster Kubernetes que j'ai monté de zéro. Le jeu affiche quel pod, sur quel nœud, a répondu à chaque requête&nbsp;: la répartition de charge et les mises à jour se voient dans le navigateur.</p>
-              <p class="stack">Kubernetes, Helm, Apache, Debian 13, VirtualBox, metrics-server, Bash</p>
-            </div>
-            <div>
-              <ul class="points">
-                <li>Cluster de trois machines Debian 13&nbsp;: un master et deux nœuds</li>
-                <li>Mise à jour sans coupure, et retour automatique à la version précédente si un déploiement échoue</li>
-                <li>Autoscaling de 2 à 8 pods selon la charge du processeur</li>
-              </ul>
-              <details>
-                <summary>Tout le détail</summary>
-                <ul>
-                  <li>Chart Helm écrit à la main, entièrement réglable depuis un seul fichier de valeurs</li>
-                  <li>Vérification avant chaque déploiement et test automatique après, avec les hooks Helm</li>
-                  <li>En équipe de quatre, j'ai aussi présenté le déploiement du jeu 2048 avec Helm&nbsp;: le pod, le versionnement des releases et la migration d'une application existante</li>
-                </ul>
-              </details>
-            </div>
-          </div>
-          <dl class="cart">
-            <div><dt>Date</dt><dd>Octobre 2026</dd></div>
-            <div><dt>Cadre</dt><dd>Cours déploiement continu</dd></div>
-            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/neon-snake-helm">neon-snake-helm</a></dd></div>
-          </dl>
-        </article>
-
-        <article class="sheet" id="p-vpn" data-tags="securite reseau">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>VPN et PKI pour protéger un serveur isolé</h3>
-              <canvas class="glyph" data-node="srv" aria-hidden="true"></canvas>
-            </div>
-            <p class="pitch">La suite du lab de passerelle&nbsp;: chiffrer les échanges entre un poste client et un serveur joignable uniquement à travers la passerelle.</p>
-            <ul class="points">
-              <li>Autorité de certification créée avec Easy-RSA, certificats signés pour le serveur et chaque client</li>
-              <li>La clé privée d'un client ne quitte jamais sa machine&nbsp;: seule sa demande de certificat circule</li>
-              <li>Démonstration en quatre temps&nbsp;: nouveau client, attaque sans VPN, activation du VPN, puis une attaque que le VPN ne bloque pas</li>
+          <p class="stack">Wazuh (manager, indexer, dashboard), agents Linux et Windows, Docker, Portainer, MITRE ATT&amp;CK</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Les trois attaques de l'ouverture de cette page reprennent ces scénarios, en version simulée</li>
+              <li>Travail d'équipe sur GitHub&nbsp;: une tâche par ticket, une pull request relue avant chaque fusion</li>
+              <li>Aucun mot de passe dans le dépôt&nbsp;: ils sont fournis au moment du déploiement</li>
             </ul>
-            <p class="stack">OpenVPN, Easy-RSA, certificats X.509, Debian 12, iptables, Bash</p>
-            <details>
-              <summary>Tout le détail</summary>
-              <ul>
-                <li>Serveur OpenVPN sur la passerelle, client Debian 12 qui rejoint le serveur par le tunnel</li>
-                <li>Scripts qui génèrent la configuration du client et lui envoient uniquement ce qu'il a le droit de recevoir</li>
-              </ul>
-            </details>
-          </div>
-          <dl class="cart">
-            <div><dt>Date</dt><dd>Octobre 2026</dd></div>
-            <div><dt>Cadre</dt><dd>Cours sécurité des échanges</dd></div>
-            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/openvpn-pki-lab">openvpn-pki-lab</a></dd></div>
-          </dl>
-        </article>
-
-        <article class="sheet" id="p-compose" data-tags="cloud">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>Une infrastructure web complète avec Docker Compose</h3>
-              <canvas class="glyph" data-node="compose" aria-hidden="true"></canvas>
-            </div>
-            <p class="role">En binôme avec Bradley Atigossou</p>
-            <p class="pitch">Un TP parti de deux conteneurs et quatre scripts, devenu une infrastructure de six services lancée en une seule commande.</p>
-            <ul class="points">
-              <li>Dockerfiles écrits par nous sur Alpine 3.22, avec des builds multi-étapes</li>
-              <li>DVWA servi par Apache et PHP-FPM, base MariaDB jamais exposée sur le réseau</li>
-              <li>Configuration sortie du code dans un fichier .env, selon la méthode des 12 factors</li>
-            </ul>
-            <p class="stack">Docker, Docker Compose, Alpine Linux, Apache, PHP-FPM, MariaDB, Portainer, Bash</p>
-            <details>
-              <summary>Tout le détail</summary>
-              <ul>
-                <li>Une application Java compilée, Portainer pour l'administration et un registre d'images interne</li>
-                <li>Un seul script pour tout piloter&nbsp;: up, status, logs, down et clean</li>
-                <li>Mémoire et processeur limités pour chaque conteneur</li>
-              </ul>
-            </details>
-          </div>
-          <dl class="cart">
-            <div><dt>Date</dt><dd>Septembre à octobre 2026</dd></div>
-            <div><dt>Cadre</dt><dd>Cours Docker</dd></div>
-            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/docker-dvwa-compose">docker-dvwa-compose</a></dd></div>
-          </dl>
-        </article>
-
-        <article class="sheet" id="p-soc" data-tags="securite">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>SOC open source autour de Wazuh</h3>
-              <canvas class="glyph" data-node="soc" aria-hidden="true"></canvas>
-            </div>
-            <p class="role">Chef de projet d'une équipe de cinq</p>
-            <p class="pitch">Mon projet de fin d'études&nbsp;: collecter, détecter et réagir, de la journalisation jusqu'à la réponse automatique.</p>
-            <ul class="points">
-              <li>Je pilote l'équipe et je m'occupe de la qualification des journaux</li>
-              <li>Détection reliée aux techniques de MITRE ATT&amp;CK</li>
-              <li>Réponse automatique et suivi des incidents</li>
-            </ul>
-            <p class="stack">Wazuh, MITRE ATT&amp;CK, threat intelligence, agents Linux et Windows</p>
-            <p class="stack"><a href="#soc">Lire la présentation complète</a></p>
-          </div>
+          </details>
           <dl class="cart">
             <div><dt>Date</dt><dd>Septembre 2026 à janvier 2027</dd></div>
             <div><dt>Cadre</dt><dd>Projet de fin d'études</dd></div>
@@ -726,26 +625,119 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           </dl>
         </article>
 
-        <article class="sheet" id="p-nat" data-tags="securite reseau">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>Passerelle NAT et rebond SSH</h3>
-              <canvas class="glyph" data-node="gw" aria-hidden="true"></canvas>
-            </div>
-            <p class="pitch">Une machine passerelle protège un serveur qui n'a pas d'accès direct à Internet.</p>
-            <ul class="points">
-              <li>NAT sortant avec iptables, règles rechargées à chaque démarrage par un script</li>
-              <li>Connexion SSH par clé, directe ou par rebond sur la passerelle</li>
-              <li>Une redirection volontairement non chiffrée, pour montrer dans Wireshark ce qu'un attaquant lit en clair</li>
+        <article class="chapter" id="p-jarvis" data-node="jarvis" data-lit="jarvis" data-yaw="46" data-name="Jarvis">
+          <h3>Jarvis, un assistant vocal qui ne quitte pas ma machine</h3>
+          <p class="role">Projet personnel</p>
+          <p class="pitch">Un assistant qui écoute, répond à voix haute et agit sur l'ordinateur. Le modèle de langage, la reconnaissance vocale et la voix tournent tous en local&nbsp;: aucune conversation ne part sur Internet. Sur le plan, c'est la seule machine sans câble.</p>
+          <ul class="points">
+            <li>«&nbsp;Hey Jarvis&nbsp;»&nbsp;: mot d'activation, détection de la fin de phrase, transcription avec Whisper, puis réponse parlée</li>
+            <li>26 outils (rappels, notes, recherche dans mes cours, terminal) et un pare-feu qui décide de ce que le modèle a le droit de faire</li>
+            <li>Pensé comme un projet de sécurité&nbsp;: commandes destructrices refusées, garde-fou contre la fuite de données privées, défense contre l'injection de prompt, journal d'audit</li>
+          </ul>
+          <p class="stack">Python, Ollama, Qwen, Whisper, openWakeWord, Silero VAD, SQLite, pytest</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Mémoire à long terme et recherche dans mes documents (RAG), avec SQLite et des embeddings</li>
+              <li>Le même code tourne sur un ThinkPad sous Linux, sans carte graphique, et est prévu pour un Mac Apple Silicon</li>
+              <li>138 tests automatiques, avec un faux serveur Ollama pour tester sans modèle réel</li>
+              <li>Interface locale verrouillée&nbsp;: serveur sur 127.0.0.1, jeton secret, politique de sécurité du contenu</li>
             </ul>
-            <p class="stack">iptables, OpenSSH, Wireshark, VirtualBox, Apache, MariaDB, vsftpd</p>
-            <details>
-              <summary>Tout le détail</summary>
-              <ul>
-                <li>Tunnels SSH locaux vers le web, MariaDB et FTP, et l'explication de pourquoi le tunnel FTP seul ne suffit pas</li>
-              </ul>
-            </details>
-          </div>
+          </details>
+          <dl class="cart">
+            <div><dt>Date</dt><dd>Octobre 2026</dd></div>
+            <div><dt>Cadre</dt><dd>Personnel</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/Jarvis">Jarvis</a></dd></div>
+          </dl>
+        </article>
+
+        <article class="chapter" id="p-neon" data-node="k8s" data-lit="k8s" data-yaw="40" data-name="Cluster Kubernetes">
+          <h3>Neon Snake, un jeu déployé sur Kubernetes avec Helm</h3>
+          <p class="pitch">Un jeu Snake servi par Apache, sur un cluster Kubernetes que j'ai monté de zéro. Le jeu affiche quel pod, sur quel nœud, a répondu à chaque requête&nbsp;: la répartition de charge et les mises à jour se voient dans le navigateur.</p>
+          <ul class="points">
+            <li>Cluster de trois machines Debian 13&nbsp;: un master et deux nœuds</li>
+            <li>Mise à jour sans coupure, et retour automatique à la version précédente si un déploiement échoue</li>
+            <li>Autoscaling de 2 à 8 pods selon la charge du processeur</li>
+          </ul>
+          <p class="stack">Kubernetes, Helm, Apache, Debian 13, VirtualBox, metrics-server, Bash</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Chart Helm écrit à la main, entièrement réglable depuis un seul fichier de valeurs</li>
+              <li>Vérification avant chaque déploiement et test automatique après, avec les hooks Helm</li>
+              <li>En équipe de quatre, j'ai aussi présenté le déploiement du jeu 2048 avec Helm&nbsp;: le pod, le versionnement des releases et la migration d'une application existante</li>
+            </ul>
+          </details>
+          <dl class="cart">
+            <div><dt>Date</dt><dd>Octobre 2026</dd></div>
+            <div><dt>Cadre</dt><dd>Cours déploiement continu</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/neon-snake-helm">neon-snake-helm</a></dd></div>
+          </dl>
+        </article>
+
+        <article class="chapter" id="p-vpn" data-node="srv" data-lit="srv client gw" data-yaw="30" data-name="Serveur isolé">
+          <h3>VPN et PKI pour protéger un serveur isolé</h3>
+          <p class="pitch">La suite du lab de passerelle&nbsp;: chiffrer les échanges entre un poste client et un serveur joignable uniquement à travers la passerelle. Sur le plan, c'est le tunnel vert.</p>
+          <ul class="points">
+            <li>Autorité de certification créée avec Easy-RSA, certificats signés pour le serveur et chaque client</li>
+            <li>La clé privée d'un client ne quitte jamais sa machine&nbsp;: seule sa demande de certificat circule</li>
+            <li>Démonstration en quatre temps&nbsp;: nouveau client, attaque sans VPN, activation du VPN, puis une attaque que le VPN ne bloque pas</li>
+          </ul>
+          <p class="stack">OpenVPN, Easy-RSA, certificats X.509, Debian 12, iptables, Bash</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Serveur OpenVPN sur la passerelle, client Debian 12 qui rejoint le serveur par le tunnel</li>
+              <li>Scripts qui génèrent la configuration du client et lui envoient uniquement ce qu'il a le droit de recevoir</li>
+            </ul>
+          </details>
+          <dl class="cart">
+            <div><dt>Date</dt><dd>Octobre 2026</dd></div>
+            <div><dt>Cadre</dt><dd>Cours sécurité des échanges</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/openvpn-pki-lab">openvpn-pki-lab</a></dd></div>
+          </dl>
+        </article>
+
+        <article class="chapter" id="p-compose" data-node="compose" data-lit="compose" data-yaw="48" data-name="Stack Docker Compose">
+          <h3>Une infrastructure web complète avec Docker Compose</h3>
+          <p class="role">En binôme avec Bradley Atigossou</p>
+          <p class="pitch">Un TP parti de deux conteneurs et quatre scripts, devenu une infrastructure de six services lancée en une seule commande.</p>
+          <ul class="points">
+            <li>Dockerfiles écrits par nous sur Alpine 3.22, avec des builds multi-étapes</li>
+            <li>DVWA servi par Apache et PHP-FPM, base MariaDB jamais exposée sur le réseau</li>
+            <li>Configuration sortie du code dans un fichier .env, selon la méthode des 12 factors</li>
+          </ul>
+          <p class="stack">Docker, Docker Compose, Alpine Linux, Apache, PHP-FPM, MariaDB, Portainer, Bash</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Une application Java compilée, Portainer pour l'administration et un registre d'images interne</li>
+              <li>Un seul script pour tout piloter&nbsp;: up, status, logs, down et clean</li>
+              <li>Mémoire et processeur limités pour chaque conteneur</li>
+            </ul>
+          </details>
+          <dl class="cart">
+            <div><dt>Date</dt><dd>Septembre à octobre 2026</dd></div>
+            <div><dt>Cadre</dt><dd>Cours Docker</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/docker-dvwa-compose">docker-dvwa-compose</a></dd></div>
+          </dl>
+        </article>
+
+        <article class="chapter" id="p-nat" data-node="gw" data-lit="gw" data-yaw="35" data-name="Passerelle">
+          <h3>Passerelle NAT et rebond SSH</h3>
+          <p class="pitch">Une machine passerelle protège un serveur qui n'a pas d'accès direct à Internet.</p>
+          <ul class="points">
+            <li>NAT sortant avec iptables, règles rechargées à chaque démarrage par un script</li>
+            <li>Connexion SSH par clé, directe ou par rebond sur la passerelle</li>
+            <li>Une redirection volontairement non chiffrée, pour montrer dans Wireshark ce qu'un attaquant lit en clair</li>
+          </ul>
+          <p class="stack">iptables, OpenSSH, Wireshark, VirtualBox, Apache, MariaDB, vsftpd</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Tunnels SSH locaux vers le web, MariaDB et FTP, et l'explication de pourquoi le tunnel FTP seul ne suffit pas</li>
+            </ul>
+          </details>
           <dl class="cart">
             <div><dt>Date</dt><dd>Septembre 2026</dd></div>
             <div><dt>Cadre</dt><dd>Lab sécurité</dd></div>
@@ -753,28 +745,41 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           </dl>
         </article>
 
-        <article class="sheet" id="p-tpaas" data-tags="reseau cloud">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>ESEO Teaching Cloud</h3>
-              <canvas class="glyph" data-node="farm" aria-hidden="true"></canvas>
-            </div>
-            <p class="role">Chef de projet et référent réseau, équipe de cinq</p>
-            <p class="pitch">Une preuve de concept de plateforme « TP as a Service »&nbsp;: regrouper sur la ferme de serveurs de l'école les machines virtuelles des travaux pratiques.</p>
-            <ul class="points">
-              <li>Réseau découpé en VLAN, switch Cisco C3560, DMZ et pare-feu OPNsense</li>
-              <li>Déploiement des machines automatisé avec Vagrant et Ansible</li>
-              <li>Livré en trois incréments, avec 79 tests de validation pour le service Gitea</li>
+        <article class="chapter" id="p-writeups" data-node="kali" data-lit="kali" data-yaw="44" data-name="Machine d'attaque">
+          <span id="p-train"></span>
+          <h3>Cyber-writeups, mon carnet d'attaque</h3>
+          <p class="pitch">Pour bien détecter une attaque, il faut savoir la mener. Je m'entraîne sur des machines volontairement vulnérables, dans un lab isolé, et j'écris ce que j'apprends&nbsp;: la technique, puis la défense.</p>
+          <ul class="points">
+            <li>Exploitation web sur DVWA et BadStore&nbsp;: XSS, CSRF, injection de commandes, injection SQL, falsification de paramètres et de cookies</li>
+            <li>Linux et élévation de privilèges&nbsp;: permissions et bits spéciaux, tâches planifiées, services systemd</li>
+            <li>Un scanner de ports TCP écrit en Python, et les bases du réseau&nbsp;: découpage en sous-réseaux et DNS</li>
+            <li>Sur <a href="https://tryhackme.com/p/Ichroc7">TryHackMe</a>&nbsp;: salles blue team et simulateur de SOC, avec le badge «&nbsp;100&nbsp;% de vrais positifs&nbsp;»</li>
+          </ul>
+          <p class="stack">Kali Linux, Burp Suite, nmap, DVWA, BadStore, Python</p>
+          <dl class="cart">
+            <div><dt>Date</dt><dd>En continu</dd></div>
+            <div><dt>Cadre</dt><dd>TP et entraînement personnel</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/Ichroc/Cyber-writeups">Cyber-writeups</a></dd></div>
+          </dl>
+        </article>
+
+        <article class="chapter" id="p-tpaas" data-node="farm" data-lit="farm" data-yaw="32" data-name="Ferme de VM">
+          <h3>ESEO Teaching Cloud</h3>
+          <p class="role">Chef de projet et référent réseau, équipe de cinq</p>
+          <p class="pitch">Une preuve de concept de plateforme «&nbsp;TP as a Service&nbsp;»&nbsp;: regrouper sur la ferme de serveurs de l'école les machines virtuelles des travaux pratiques.</p>
+          <ul class="points">
+            <li>Réseau découpé en VLAN, switch Cisco C3560, DMZ et pare-feu OPNsense</li>
+            <li>Déploiement des machines automatisé avec Vagrant et Ansible</li>
+            <li>Livré en trois incréments, avec 79 tests de validation pour le service Gitea</li>
+          </ul>
+          <p class="stack">Cisco IOS, OPNsense, Vagrant, Ansible, VirtualBox, MariaDB, BIND9, Nagios, Gitea</p>
+          <details>
+            <summary>Tout le détail</summary>
+            <ul>
+              <li>Routage inter-VLAN entre les zones de la plateforme</li>
+              <li>Services MariaDB, DNS avec BIND9, supervision avec Nagios</li>
             </ul>
-            <p class="stack">Cisco IOS, OPNsense, Vagrant, Ansible, VirtualBox, MariaDB, BIND9, Nagios, Gitea</p>
-            <details>
-              <summary>Tout le détail</summary>
-              <ul>
-                <li>Routage inter-VLAN entre les zones de la plateforme</li>
-                <li>Services MariaDB, DNS avec BIND9, supervision avec Nagios</li>
-              </ul>
-            </details>
-          </div>
+          </details>
           <dl class="cart">
             <div><dt>Date</dt><dd>Janvier à juin 2026</dd></div>
             <div><dt>Cadre</dt><dd>Projet d'équipe</dd></div>
@@ -782,46 +787,31 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           </dl>
         </article>
 
-        <article class="sheet" id="p-cisco" data-tags="reseau">
-          <div class="sheet-body">
-            <div class="sheet-head">
-              <h3>Réseau multi-sites Paris et Angers</h3>
-              <canvas class="glyph" data-node="sw" aria-hidden="true"></canvas>
-            </div>
-            <p class="pitch">Deux sites configurés de bout en bout sur du matériel Cisco, puis documentés en entier.</p>
-            <ul class="points">
-              <li>VLAN et VTP, routage inter-VLAN, DHCP</li>
-              <li>EIGRP entre les deux sites, NAT/PAT vers Internet</li>
-              <li>Wi-Fi sécurisé en WPA2</li>
-            </ul>
-            <p class="stack">Cisco IOS, EIGRP, VTP, NAT/PAT, DHCP, WPA2</p>
-          </div>
+        <article class="chapter" id="p-cisco" data-node="sw" data-lit="sw" data-yaw="42" data-name="Cœur réseau Cisco">
+          <h3>Réseau multi-sites Paris et Angers</h3>
+          <p class="pitch">Deux sites configurés de bout en bout sur du matériel Cisco, puis documentés en entier.</p>
+          <ul class="points">
+            <li>VLAN et VTP, routage inter-VLAN, DHCP</li>
+            <li>EIGRP entre les deux sites, NAT/PAT vers Internet</li>
+            <li>Wi-Fi sécurisé en WPA2</li>
+          </ul>
+          <p class="stack">Cisco IOS, EIGRP, VTP, NAT/PAT, DHCP, WPA2</p>
           <dl class="cart">
-            <div><dt>Date</dt><dd>Lab ESEO</dd></div>
+            <div><dt>Date</dt><dd>Septembre 2026</dd></div>
             <div><dt>Cadre</dt><dd>Lab réseau</dd></div>
             <div><dt>Code</dt><dd>Non publié</dd></div>
           </dl>
         </article>
 
-        <article class="sheet small" id="p-train" data-tags="securite">
-          <div class="sheet-body">
-            <h3>Entraînement en cybersécurité</h3>
-            <p class="pitch">Je m'entraîne en dehors des cours et je garde une trace écrite de ce que j'apprends.</p>
-            <ul class="points">
-              <li>Salles blue team et simulateur de SOC sur TryHackMe, avec le badge « 100&nbsp;% de vrais positifs »</li>
-              <li><a href="https://github.com/Ichroc/Cyber-writeups">Comptes rendus publiés sur GitHub</a></li>
-            </ul>
-          </div>
-          <dl class="cart">
-            <div><dt>Date</dt><dd>En continu</dd></div>
-            <div><dt>Cadre</dt><dd>Hors cours</dd></div>
-            <div><dt>Profil</dt><dd><a href="https://tryhackme.com/p/Ichroc7">TryHackMe</a></dd></div>
-          </dl>
-        </article>
+      </div>
+    </div>
 
-        <article class="sheet small" id="p-sht" data-tags="perso">
+    <div class="wrap side">
+      <h3>Et deux applications web, côté produit</h3>
+      <div class="sheets">
+        <article class="sheet" id="p-sht">
           <div class="sheet-body">
-            <h3>SideHustle Tracker</h3>
+            <h4>SideHustle Tracker</h4>
             <p class="pitch">Une application web pour suivre une activité à côté sans se perdre dans la comptabilité&nbsp;: revenus, dépenses, clients, factures PDF et export CSV. Abonnement mensuel, avec sept jours d'essai.</p>
             <p class="stack">Replit, comptes utilisateurs, paiement par abonnement</p>
           </div>
@@ -831,10 +821,9 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
             <div><dt>En ligne</dt><dd><a href="https://side-hustle-tracker.replit.app">Ouvrir l'application</a></dd></div>
           </dl>
         </article>
-
-        <article class="sheet small" id="p-habit" data-tags="perso">
+        <article class="sheet" id="p-habit">
           <div class="sheet-body">
-            <h3>Habitstack</h3>
+            <h4>Habitstack</h4>
             <p class="pitch">Une application de suivi d'habitudes, proposée en abonnement. Je la finalise avant de l'ouvrir au public.</p>
             <p class="stack">Replit, Stripe</p>
           </div>
@@ -844,7 +833,6 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
             <div><dt>Statut</dt><dd>En développement</dd></div>
           </dl>
         </article>
-
       </div>
     </div>
   </section>
@@ -856,6 +844,20 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
       <p class="intro">Chaque outil renvoie au projet qui le montre. Comme la nomenclature d'un plan&nbsp;: la liste des pièces, et où elles se trouvent.</p>
 
       <div class="nomen">
+        <div>
+          <h3>Sécurité</h3>
+          <p class="what">Rejouer une attaque, la détecter, la relier à une technique connue, chiffrer les échanges.</p>
+          <table>
+            <thead><tr><th scope="col">Outil</th><th scope="col">Utilisé dans</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Wazuh, MITRE ATT&amp;CK</th><td><a href="#soc">SOC</a></td></tr>
+              <tr><th scope="row">Kali Linux, Burp Suite, nmap</th><td><a href="#p-writeups">Cyber-writeups</a></td></tr>
+              <tr><th scope="row">Injection SQL, XSS, élévation de privilèges</th><td><a href="#p-writeups">Cyber-writeups</a>, <a href="#soc">SOC</a></td></tr>
+              <tr><th scope="row">OpenVPN, Easy-RSA</th><td><a href="#p-vpn">VPN et PKI</a></td></tr>
+              <tr><th scope="row">Tunnels SSH</th><td><a href="#p-nat">Passerelle NAT</a></td></tr>
+            </tbody>
+          </table>
+        </div>
         <div>
           <h3>Réseau</h3>
           <p class="what">Concevoir un plan de VLAN, configurer switchs et routeurs, filtrer le trafic, lire une capture.</p>
@@ -871,28 +873,14 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           </table>
         </div>
         <div>
-          <h3>Sécurité</h3>
-          <p class="what">Collecter et qualifier des journaux, relier une alerte à une attaque, chiffrer les échanges.</p>
-          <table>
-            <thead><tr><th scope="col">Outil</th><th scope="col">Utilisé dans</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Wazuh</th><td><a href="#soc">SOC</a>, <a href="#p-train">Entraînement</a></td></tr>
-              <tr><th scope="row">MITRE ATT&amp;CK</th><td><a href="#soc">SOC</a></td></tr>
-              <tr><th scope="row">OpenVPN, Easy-RSA</th><td><a href="#p-vpn">VPN et PKI</a></td></tr>
-              <tr><th scope="row">Tunnels SSH</th><td><a href="#p-nat">Passerelle NAT</a></td></tr>
-              <tr><th scope="row">DVWA</th><td><a href="#p-compose">Docker Compose</a></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
           <h3>Cloud et DevOps</h3>
           <p class="what">Monter un cluster, packager une application, conteneuriser une infrastructure, déployer sans clic.</p>
           <table>
             <thead><tr><th scope="col">Outil</th><th scope="col">Utilisé dans</th></tr></thead>
             <tbody>
               <tr><th scope="row">Kubernetes, Helm</th><td><a href="#p-neon">Neon Snake</a></td></tr>
-              <tr><th scope="row">Docker, Docker Compose</th><td><a href="#p-compose">Docker Compose</a></td></tr>
-              <tr><th scope="row">Portainer, registre interne</th><td><a href="#p-compose">Docker Compose</a></td></tr>
+              <tr><th scope="row">Docker, Docker Compose</th><td><a href="#p-compose">Docker Compose</a>, <a href="#soc">SOC</a></td></tr>
+              <tr><th scope="row">Portainer</th><td><a href="#p-compose">Docker Compose</a>, <a href="#soc">SOC</a></td></tr>
               <tr><th scope="row">Ansible, Vagrant</th><td><a href="#p-tpaas">Teaching Cloud</a></td></tr>
               <tr><th scope="row">VirtualBox</th><td><a href="#p-neon">Neon Snake</a>, <a href="#p-nat">Passerelle NAT</a>, <a href="#p-tpaas">Teaching Cloud</a></td></tr>
             </tbody>
@@ -913,12 +901,26 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
           </table>
         </div>
         <div>
-          <h3>Gestion de projet</h3>
+          <h3>Développement et IA locale</h3>
+          <p class="what">Écrire un outil en Python, le tester, faire tourner un modèle de langage sur sa propre machine.</p>
+          <table>
+            <thead><tr><th scope="col">Outil</th><th scope="col">Utilisé dans</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Python</th><td><a href="#p-jarvis">Jarvis</a>, <a href="#p-writeups">Cyber-writeups</a></td></tr>
+              <tr><th scope="row">Ollama, Whisper</th><td><a href="#p-jarvis">Jarvis</a></td></tr>
+              <tr><th scope="row">RAG, embeddings, SQLite</th><td><a href="#p-jarvis">Jarvis</a></td></tr>
+              <tr><th scope="row">pytest</th><td><a href="#p-jarvis">Jarvis</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Travail en équipe</h3>
           <p class="what">Répartir le travail, livrer par incréments, documenter pour ceux qui reprennent.</p>
           <table>
             <thead><tr><th scope="col">Pratique</th><th scope="col">Utilisé dans</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Pilotage d'une équipe de cinq</th><td><a href="#soc">SOC</a>, <a href="#p-tpaas">Teaching Cloud</a></td></tr>
+              <tr><th scope="row">Pilotage d'une équipe de cinq</th><td><a href="#p-tpaas">Teaching Cloud</a></td></tr>
+              <tr><th scope="row">Tickets, pull requests et relectures sur GitHub</th><td><a href="#soc">SOC</a></td></tr>
               <tr><th scope="row">Livraison par incréments</th><td><a href="#p-tpaas">Teaching Cloud</a></td></tr>
               <tr><th scope="row">Formation</th><td><a href="#certifications">MOOC Centrale Lille</a></td></tr>
             </tbody>
@@ -933,12 +935,11 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   <section class="sec" id="parcours">
     <div class="wrap">
       <h2 class="title">Parcours</h2>
-      <!-- Complète la ligne 2024 : nom complet de la formation et de l'établissement -->
       <ol class="cote">
-        <li><span class="when">2024</span><span class="what">IRDW</span></li>
+        <li><span class="when">Fin 2024</span><span class="what">Projet IRDW à l'ESEO&nbsp;: infrastructure, réseau, base de données et web</span></li>
         <li><span class="when">Janvier à juin 2026</span><span class="what">ESEO Teaching Cloud, chef de projet et référent réseau</span></li>
-        <li><span class="when">Septembre 2026</span><span class="what">5<sup>e</sup> année à l'ESEO, spécialité Cloud, Systèmes et Sécurité, et lancement du SOC Wazuh</span></li>
-        <li><span class="when">Octobre 2026</span><span class="what">Trois projets publiés en open source</span></li>
+        <li><span class="when">Septembre 2026</span><span class="what">5<sup>e</sup> année à l'ESEO, spécialité Cloud, Systèmes et Sécurité, et début du SOC Wazuh</span></li>
+        <li><span class="when">Octobre 2026</span><span class="what">Quatre projets publiés en open source, dont Jarvis</span></li>
         <li class="next"><span class="when">Fin janvier 2027</span><span class="what">Stage de fin d'études</span></li>
       </ol>
 
@@ -985,7 +986,7 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
         <a href="https://github.com/Ichroc">GitHub</a>
         <a href="https://tryhackme.com/p/Ichroc7">TryHackMe</a>
       </p>
-      <p class="foot">© 2026 Ichroc Fassassi. Révision d'octobre 2026. Site en HTML, CSS et JavaScript, sans framework ni bibliothèque, hébergé sur GitHub Pages. Les attaques montrées sur cette page sont simulées.</p>
+      <p class="foot">© 2026 Ichroc Fassassi. Révision de novembre 2026. Site en HTML, CSS et JavaScript, sans framework ni bibliothèque, hébergé sur GitHub Pages. Les attaques montrées sur cette page sont simulées&nbsp;: 203.0.113.42 est une adresse réservée à la documentation, aucune vraie machine n'est visée.</p>
     </div>
   </section>
 
@@ -1011,39 +1012,6 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   window.addEventListener('scroll', headState, { passive: true });
   headState();
 
-  /* ================= Filtre des projets ================= */
-  var bar = document.getElementById('filters');
-  var shown = document.getElementById('shown');
-  var chips = Array.prototype.slice.call(bar.querySelectorAll('.chip'));
-  var sheets = Array.prototype.slice.call(document.querySelectorAll('#sheets .sheet'));
-  function matches(s, f) { return f === 'tous' || (' ' + s.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') !== -1; }
-  function applyFilter(f, announce) {
-    var n = 0;
-    chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-filter') === f ? 'true' : 'false'); });
-    sheets.forEach(function (s) { var ok = matches(s, f); s.hidden = !ok; if (ok) n++; });
-    if (announce) shown.textContent = n + (n > 1 ? ' projets affichés' : ' projet affiché');
-  }
-  chips.forEach(function (chip) {
-    var f = chip.getAttribute('data-filter');
-    chip.querySelector('.n').textContent = sheets.filter(function (s) { return matches(s, f); }).length;
-    chip.addEventListener('click', function () { applyFilter(f, true); });
-  });
-  bar.hidden = false;
-  function reveal(href) {
-    if (href.indexOf('#p-') !== 0) return;
-    var t = document.getElementById(href.slice(1));
-    if (t && t.hidden) applyFilter('tous', false);
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="#p-"]');
-    if (a) reveal(a.getAttribute('href'));
-  });
-  function go(href) {
-    reveal(href);
-    if (location.hash === href) { var t = document.querySelector(href); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
-    else location.hash = href;
-  }
-
   /* ================= Copier l'adresse ================= */
   var copy = document.getElementById('copy');
   copy.addEventListener('click', function () {
@@ -1055,16 +1023,6 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     } else { done("Copie impossible, sélectionnez l'adresse"); }
   });
 
-  /* ================= Le trajet d'une alerte ================= */
-  var journey = document.getElementById('journey');
-  if (journey && !reduce && 'IntersectionObserver' in window) {
-    journey.classList.add('armed');
-    var jo = new IntersectionObserver(function (e) {
-      if (e[0].isIntersecting) { journey.classList.add('play'); jo.disconnect(); }
-    }, { threshold: .4 });
-    jo.observe(journey);
-  }
-
   /* =================================================================
      LE MONDE : les machines du plan, en unités de grille
      ================================================================= */
@@ -1075,8 +1033,10 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   var composeBoxes = [Bx(17.5, 6, 3.15, 2.1, .08, { layer: 0 })];
   [16.55, 17.5, 18.45].forEach(function (x) { [5.55, 6.45].forEach(function (y) { composeBoxes.push(Bx(x, y, .74, .74, .72, { z0: .08 })); }); });
 
+  var KX = -1.4, KY = 7.6;   /* la machine d'attaque */
   var NODES = {
-    internet: { x: 0, y: 7, order: 0 },
+    internet: { x: -2.5, y: 3, order: 0 },
+    kali:    { boxes: [Bx(KX, KY, 1.5, 1, .2), Bx(KX, KY - .48, 1.5, .1, .95, { z0: .2, deco: 'screen' })], order: .3, href: '#p-writeups', hostile: true },
     client:  { boxes: [Bx(-1, -1.2, 1.5, 1, .2), Bx(-1, -1.68, 1.5, .1, .95, { z0: .2, deco: 'screen' })], order: 0, href: '#p-vpn' },
     gw:      { boxes: [Bx(5, 5, 2.2, 2.2, 1.5, { deco: 'bricks' })], order: 1, href: '#p-nat' },
     soc:     { boxes: [Bx(9, .5, 1.8, 1.8, 3.3, { deco: 'band' })], antenna: .9, order: 2, href: '#soc' },
@@ -1084,7 +1044,8 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     k8s:     { boxes: [Bx(14.5, 1.3, 1.05, 1.05, 1.9, { deco: 'slots' }), Bx(13.65, 2.7, 1, 1, 1.3, { deco: 'slots' }), Bx(15.35, 2.7, 1, 1, 1.3, { deco: 'slots' })], order: 3.6, href: '#p-neon' },
     compose: { boxes: composeBoxes, order: 4.6, href: '#p-compose' },
     farm:    { boxes: [Bx(12.6, 10, .8, 1.2, 2.2, { deco: 'slots' }), Bx(13.5, 10, .8, 1.2, 2.2, { deco: 'slots' }), Bx(14.4, 10, .8, 1.2, 2.2, { deco: 'slots' })], order: 4.2, href: '#p-tpaas' },
-    srv:     { boxes: [Bx(8, 11, 2.5, 2.5, 1.7, { ghost: true }), Bx(8, 11, 1.4, 1.4, 1, { deco: 'slots' })], order: 3.2, href: '#p-vpn' }
+    srv:     { boxes: [Bx(8, 11, 2.5, 2.5, 1.7, { ghost: true }), Bx(8, 11, 1.4, 1.4, 1, { deco: 'slots' })], order: 3.2, href: '#p-vpn' },
+    jarvis:  { boxes: [Bx(17.7, 10.7, 1.7, 1.15, .22), Bx(17.7, 10.15, 1.7, .1, 1.05, { z0: .22, deco: 'screen' })], order: 5.2, href: '#p-jarvis' }
   };
   Object.keys(NODES).forEach(function (k) {
     var n = NODES[k];
@@ -1095,7 +1056,8 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   });
 
   var CABLES = {
-    inet:    [[0, 7], [3, 7], [3, 5.4], [5, 5.4]],
+    inet:    [[-2.5, 3], [3, 3], [3, 5.4], [5, 5.4]],
+    kali:    [[KX, KY], [3, KY], [3, 5.4]],
     tunnel:  [[-1, -1.2], [3.6, -1.2], [3.6, 4.6], [5, 4.6]],
     gwsw:    [[5, 5], [10.8, 5], [10.8, 6.5]],
     k8s:     [[10.8, 6.5], [12.6, 6.5], [12.6, 2], [14.5, 2], [14.5, 1.3]],
@@ -1104,17 +1066,17 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     srv:     [[10.8, 6.5], [10.8, 11], [8, 11]]
   };
   var CLUSTER = [[[14.5, 1.3], [13.65, 2.7]], [[14.5, 1.3], [15.35, 2.7]]];
-  var WALL = { x: 1.5, y: 7, half: .95, h: 1.3 };
-  var STOP = WALL.x - NODES.internet.x - .12;
+  var WALL = { x: 2, y: KY, half: .95, h: 1.3 };
+  var STOP = WALL.x - KX - .12;
+  var CAGE = Bx(13.5, 10, 3.5, 2.1, 2.75);
   var RADAR = 6.6;
-  var TARGET = Math.atan2(NODES.gw.ay - NODES.soc.ay, NODES.gw.ax - NODES.soc.ax);
   var COL = { norm: [228, 240, 255], tun: [111, 227, 180], log: [143, 184, 255], atk: [255, 125, 110] };
 
   var NIGHT = { top: 'rgba(38,86,146,.97)', sideA: 'rgba(24,62,108,.97)', sideB: 'rgba(15,44,82,.97)', edge: [222, 236, 255], edgeA: .92, lw: 1.15, glow: true,
                 alert: COL.atk, deco: [200, 222, 250], decoA: .5, ghost: COL.tun, screen: COL.log };
-  var PAPER = { top: '#FFFFFF', sideA: '#E3EAF4', sideB: '#CDD9EA', edge: [19, 48, 90], edgeA: 1, lw: 1.05, glow: false,
-                alert: [198, 47, 42], deco: [19, 48, 90], decoA: .42, ghost: [30, 122, 87], screen: [42, 91, 199] };
-
+  /* Les machines hors du projet en cours, pendant la visite */
+  var DIM = { top: 'rgba(25,60,106,.97)', sideA: 'rgba(17,46,84,.97)', sideB: 'rgba(12,36,68,.97)', edge: [168, 196, 234], edgeA: .4, lw: 1, glow: false,
+              alert: COL.atk, deco: [168, 196, 234], decoA: .2, ghost: COL.tun, screen: COL.log };
   /* ---------- Projection orthographique : rotation, puis bascule ---------- */
   function trig(c) { c.ca = Math.cos(c.a); c.sa = Math.sin(c.a); c.cb = Math.cos(c.b); c.sb = Math.sin(c.b); }
   function P(x, y, z, c) {
@@ -1284,7 +1246,263 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   }
 
   /* =================================================================
-     LA SCÈNE DE L'OUVERTURE
+     ROUTES, SCÉNARIOS ET VIE DU PLAN (communs aux deux scènes)
+     ================================================================= */
+  var R_NORM = { k8s: join(['inet', 'gwsw', 'k8s']), compose: join(['inet', 'gwsw', 'compose']), farm: join(['inet', 'gwsw', 'farm']) };
+  var R_TUN = join(['tunnel', 'gwsw', 'srv']);
+  var R_SSH = mkPath([[KX, KY], [3, KY], [3, 5.4], [5, 5.4]]);
+  var R_WEB = mkPath([[KX, KY], [3, KY], [3, 5.4], [5, 5.4]].concat(CABLES.gwsw, CABLES.compose));
+  var DESTS = ['k8s', 'compose', 'farm'];
+  var ARC_FROM = ['gw', 'sw', 'k8s', 'compose', 'farm', 'srv'];
+  var ARCS = {};
+  ARC_FROM.forEach(function (k) {
+    var a = NODES[k], s = NODES.soc, dist = Math.hypot(a.ax - s.ax, a.ay - s.ay);
+    ARCS[k] = [[a.ax, a.ay, a.top + .05], [(a.ax + s.ax) / 2, (a.ay + s.ay) / 2, Math.max(a.top, s.top) + 1.1 + dist * .13], [s.ax, s.ay, s.top + .08]];
+  });
+
+  /* Les trois attaques simulées de l'ouverture : celles que je prépare pour le SOC */
+  var SCN = {
+    ssh:  { route: R_SSH, v: 4.4, target: 'gw', resp: 'wall', status: 'Alerte : force brute SSH (T1110)',
+            feed: ['sshd : mot de passe refusé pour admin', '8 échecs en 10 s : force brute, niveau 10', 'T1110, Brute Force', '203.0.113.42 bloquée sur le pare-feu'] },
+    web:  { route: R_WEB, v: 11, target: 'compose', resp: 'wall', status: 'Alerte : injection SQL (T1190)',
+            feed: ["Apache : GET /sqli/?id=1' OR '1'='1", 'Injection SQL dans une requête web', 'T1190, Exploit Public-Facing Application', '203.0.113.42 bloquée, incident ouvert'] },
+    priv: { route: null, v: 0, target: 'farm', resp: 'cage', status: 'Alerte : élévation de privilèges (T1548)',
+            feed: ['sudo : www-data demande un shell root', 'Élévation de privilèges inhabituelle', 'T1548, Abuse Elevation Control Mechanism', 'Session coupée, compte désactivé'] }
+  };
+  var SCN_ORDER = ['ssh', 'web', 'priv'];
+
+  function mkState() { return { packets: [], airs: [], sparks: [], acc: { n: 0, t: 500, l: 250, a: 0, g: 0 } }; }
+  /* Le trafic ordinaire : requêtes, tunnel chiffré, journaux qui montent vers le SOC */
+  function ambient(st, dt) {
+    var a = st.acc;
+    a.n -= dt; if (a.n <= 0) { st.packets.push({ r: R_NORM[DESTS[(Math.random() * 3) | 0]], d: 0, v: 3.1, col: COL.norm, stop: null, fade: 1 }); a.n = 480 + Math.random() * 520; }
+    a.t -= dt; if (a.t <= 0) { st.packets.push({ r: R_TUN, d: 0, v: 2.5, col: COL.tun, stop: null, fade: 1 }); a.t = 1250 + Math.random() * 700; }
+    a.l -= dt; if (a.l <= 0) { st.airs.push({ A: ARCS[ARC_FROM[(Math.random() * ARC_FROM.length) | 0]], t: 0, dur: 1500, col: COL.log }); a.l = 380 + Math.random() * 360; }
+  }
+  function advance(st, dt, wall) {
+    var i, k;
+    for (i = st.packets.length - 1; i >= 0; i--) {
+      k = st.packets[i];
+      if (k.col === COL.atk && k.stop === null && wall > .25 && k.d < STOP) k.stop = STOP;
+      if (k.stop !== null && k.d >= k.stop) {
+        if (k.fade === 1) st.sparks.push({ y: WALL.y + (Math.random() - .5) * 1.2, z: .15 + Math.random() * Math.max(.2, wall - .35), t: 0 });
+        k.d = k.stop; k.fade -= dt / 260;
+      } else k.d += k.v * dt / 1000;
+      if (k.d >= k.r.T || k.fade <= 0) st.packets.splice(i, 1);
+    }
+    for (i = st.airs.length - 1; i >= 0; i--) { st.airs[i].t += dt / st.airs[i].dur; if (st.airs[i].t >= 1) st.airs.splice(i, 1); }
+    for (i = st.sparks.length - 1; i >= 0; i--) { st.sparks[i].t += dt; if (st.sparks[i].t > 520) st.sparks.splice(i, 1); }
+  }
+
+  /* ---------- Le sol ---------- */
+  function drawFloor(g, c, a) {
+    if (a <= 0) return;
+    var p = P(c.cx + 1.2, c.cy, 0, c), R = 12 * c.s;
+    g.save(); g.translate(p[0], p[1]); g.scale(1, Math.max(c.cb, .05));
+    var gr = g.createRadialGradient(0, 0, 0, 0, 0, R);
+    gr.addColorStop(0, 'rgba(80,140,220,' + (.2 * a) + ')'); gr.addColorStop(1, 'rgba(80,140,220,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(0, 0, R, 0, Math.PI * 2); g.fill();
+    g.restore();
+  }
+  function gridLine(g, c, x0, y0, x1, y1, major, dist, a) {
+    var f = clamp(1 - dist / 15, 0, 1);
+    if (f <= 0) return;
+    var p = P(x0, y0, 0, c), q = P(x1, y1, 0, c), m = (major ? .2 : .085) * f * a;
+    var gr = g.createLinearGradient(p[0], p[1], q[0], q[1]);
+    gr.addColorStop(0, 'rgba(160,198,245,0)'); gr.addColorStop(.5, 'rgba(160,198,245,' + m + ')'); gr.addColorStop(1, 'rgba(160,198,245,0)');
+    g.strokeStyle = gr; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke();
+  }
+  function drawGrid(g, c, a) {
+    if (a <= 0) return;
+    g.save(); g.lineWidth = 1;
+    for (var i = -7; i <= 24; i++) gridLine(g, c, i, -8, i, 20, i % 4 === 0, Math.abs(i - c.cx), a);
+    for (var j = -8; j <= 20; j++) gridLine(g, c, -7, j, 24, j, j % 4 === 0, Math.abs(j - c.cy), a);
+    g.restore();
+  }
+  function drawRadar(g, c, a, ang, alert) {
+    if (a <= 0) return;
+    var n = NODES.soc, p = P(n.ax, n.ay, 0, c), R = RADAR * c.s, rY = Math.max(.001, R * c.cb), col = alert ? COL.atk : COL.log;
+    g.save(); g.globalAlpha = a;
+    g.setLineDash([3, 7]); g.lineWidth = 1;
+    [1 / 3, 2 / 3, 1].forEach(function (k) { g.beginPath(); g.ellipse(p[0], p[1], R * k, rY * k, 0, 0, Math.PI * 2); g.strokeStyle = rgba(col, .17); g.stroke(); });
+    g.setLineDash([]);
+    g.globalCompositeOperation = 'lighter';
+    var span = .95, N = 20, phi = ang + c.a;
+    for (var i = 0; i < N; i++) {
+      var a1 = phi - span * i / N, a0 = phi - span * (i + 1) / N;
+      g.beginPath(); g.moveTo(p[0], p[1]); g.ellipse(p[0], p[1], R, rY, 0, a0, a1); g.closePath();
+      g.fillStyle = rgba(col, .22 * Math.pow(1 - i / N, 1.6)); g.fill();
+    }
+    g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(p[0] + Math.cos(phi) * R, p[1] + Math.sin(phi) * rY);
+    g.strokeStyle = rgba(col, .5); g.lineWidth = 1.2; g.stroke();
+    g.restore();
+  }
+  function rings(g, c, x, y, col, a, T, period, r0, r1, n) {
+    if (a <= 0) return;
+    var p = P(x, y, 0, c);
+    g.save(); g.globalAlpha = a;
+    for (var i = 0; i < n; i++) {
+      var k = ((T / period) + i / n) % 1, R = (r0 + k * (r1 - r0)) * c.s;
+      g.beginPath(); g.ellipse(p[0], p[1], R, Math.max(.001, R * c.cb), 0, 0, Math.PI * 2);
+      g.strokeStyle = rgba(col, (1 - k) * .6); g.lineWidth = 1.2; g.stroke();
+    }
+    g.restore();
+  }
+  function drawPortal(g, c, a, T) {
+    if (a <= 0) return;
+    var n = NODES.internet, p = P(n.x, n.y, 0, c);
+    rings(g, c, n.x, n.y, COL.norm, a, T, 2400, .3, 1.45, 3);
+    g.save(); g.globalAlpha = a;
+    g.beginPath(); g.ellipse(p[0], p[1], .3 * c.s, Math.max(.001, .3 * c.s * c.cb), 0, 0, Math.PI * 2);
+    g.fillStyle = rgba(COL.norm, .4); g.fill();
+    g.restore();
+  }
+  /* Jarvis parle : des ondes autour de la seule machine sans câble */
+  function drawVoice(g, c, a, T) { var n = NODES.jarvis; rings(g, c, n.ax, n.ay + .15, COL.tun, a, T, 2600, .95, 2.3, 3); }
+  /* Une machine visée : des ondes rouges à son pied */
+  function drawHit(g, c, k, a, T) { var n = NODES[k]; rings(g, c, n.ax, n.ay, COL.atk, a, T, 1100, 1.2, 2.9, 3); }
+
+  function drawCables(g, c, k0, T, atk) {
+    if (k0 <= 0) return;
+    Object.keys(CABLES).forEach(function (id, idx) {
+      var pts = CABLES[id].map(function (q) { return P(q[0], q[1], 0, c); });
+      var len = 0; for (var i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+      var k = clamp(k0 * 1.3 - idx * .04, 0, 1);
+      if (k <= 0) return;
+      g.save();
+      g.setLineDash(k < 1 ? [len * k, len + 10] : []);
+      poly(g, pts, false);
+      if (id === 'tunnel') {
+        g.strokeStyle = rgba(COL.tun, .34); g.lineWidth = 6.5; g.stroke();
+        g.strokeStyle = 'rgb(14,40,74)'; g.lineWidth = 2.6; g.stroke();
+        g.strokeStyle = rgba(COL.tun, .6); g.lineWidth = .8; g.stroke();
+      } else if (id === 'kali' && atk && k >= 1) {
+        g.strokeStyle = rgba(COL.atk, .18); g.lineWidth = 5; g.stroke();
+        g.setLineDash([7, 6]); g.lineDashOffset = -T * .03;
+        g.strokeStyle = rgba(COL.atk, .95); g.lineWidth = 1.6; g.stroke();
+      } else {
+        g.strokeStyle = 'rgba(160,200,250,.13)'; g.lineWidth = 4.5; g.stroke();
+        g.strokeStyle = 'rgba(214,232,255,.62)'; g.lineWidth = 1.15; g.stroke();
+      }
+      g.restore();
+    });
+    g.save(); g.globalAlpha = k0; g.strokeStyle = 'rgba(214,232,255,.4)'; g.lineWidth = 1; g.beginPath();
+    CLUSTER.forEach(function (l) { seg(g, P(l[0][0], l[0][1], 0, c), P(l[1][0], l[1][1], 0, c)); });
+    g.stroke(); g.restore();
+  }
+  function drawGroundPackets(g, c, packets) {
+    g.save(); g.globalCompositeOperation = 'lighter';
+    packets.forEach(function (k) {
+      var spr = sprite(k.col), big = k.col === COL.atk ? 13 : 10;
+      for (var i = 6; i >= 0; i--) {
+        var d = k.d - i * .15; if (d < 0) continue;
+        var q = at(k.r, d), p = P(q[0], q[1], .04, c), f = 1 - i / 7, rr = big * (.4 + .6 * f);
+        g.globalAlpha = f * f * k.fade;
+        g.drawImage(spr, p[0] - rr, p[1] - rr, rr * 2, rr * 2);
+      }
+    });
+    g.restore();
+  }
+
+  /* ---------- Les volumes, du plus loin au plus proche ---------- */
+  function drawSolids(g, c, riseOf, themeOf, stateOf, extras, pts) {
+    var list = [];
+    Object.keys(NODES).forEach(function (k) {
+      var n = NODES[k];
+      if (!n.boxes) return;
+      n.boxes.forEach(function (b) {
+        var d = P(b.cx, b.cy, 0, c)[2];
+        if (b.ghost) { list.push({ t: 'gb', b: b, k: k, L: 1, d: d - .02 }); list.push({ t: 'gf', b: b, k: k, L: 1, d: d + .02 }); }
+        else list.push({ t: 'box', b: b, k: k, L: b.layer, d: d });
+      });
+    });
+    (extras || []).forEach(function (e) { list.push(e); });
+    list.sort(function (p, q) { return (p.L - q.L) || (p.d - q.d); });
+    list.forEach(function (it) {
+      if (it.fn) { it.fn(); return; }
+      var r = riseOf(it.k), th = themeOf(it.k);
+      if (it.t !== 'box') { drawGhost(g, c, it.b, r, th, it.t === 'gf' ? 'front' : 'back'); return; }
+      var B = drawBox(g, c, it.b, r, th, stateOf(it.k, r));
+      if (pts) (pts[it.k] = pts[it.k] || []).push.apply(pts[it.k], B.v);
+    });
+  }
+  function drawWall(g, c, h) {
+    if (h < .015) return;
+    var y0 = WALL.y - WALL.half, y1 = WALL.y + WALL.half, x = WALL.x;
+    var q = [P(x, y0, 0, c), P(x, y1, 0, c), P(x, y1, h, c), P(x, y0, h, c)];
+    g.save();
+    g.globalCompositeOperation = 'lighter';
+    poly(g, q, true); g.fillStyle = rgba(COL.atk, .14); g.fill();
+    g.globalCompositeOperation = 'source-over';
+    g.beginPath();
+    for (var z = .18; z < h; z += .18) seg(g, P(x, y0, z, c), P(x, y1, z, c));
+    g.strokeStyle = rgba(COL.atk, .35); g.lineWidth = .8; g.stroke();
+    poly(g, q, true);
+    g.strokeStyle = rgba(COL.atk, .25); g.lineWidth = 4.5; g.stroke();
+    g.strokeStyle = rgba(COL.atk, .95); g.lineWidth = 1.3; g.stroke();
+    g.restore();
+  }
+  function drawAntenna(g, c, r, T, alert) {
+    if (r <= .02) return;
+    var n = NODES.soc, top = n.top * r, p0 = P(n.ax, n.ay, top, c), p1 = P(n.ax, n.ay, top + n.antenna * r, c);
+    g.save();
+    g.strokeStyle = rgba(NIGHT.edge, .85); g.lineWidth = 1.1; g.beginPath(); seg(g, p0, p1); g.stroke();
+    var blink = alert ? (Math.sin(T / 85) > 0 ? 1 : .3) : .55 + .45 * Math.sin(T / 650);
+    g.globalCompositeOperation = 'lighter'; g.globalAlpha = blink * r;
+    var rr = alert ? 13 : 9;
+    g.drawImage(sprite(alert ? COL.atk : COL.log), p1[0] - rr, p1[1] - rr, rr * 2, rr * 2);
+    g.restore();
+  }
+  function drawArcs(g, c, a, hotKey) {
+    if (a <= 0) return;
+    g.save(); g.setLineDash([2, 6]); g.lineWidth = 1;
+    ARC_FROM.forEach(function (k) {
+      var A = ARCS[k], hotArc = k === hotKey;
+      g.beginPath();
+      for (var i = 0; i <= 28; i++) { var q = bez(A, i / 28), p = P(q[0], q[1], q[2], c); if (i) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); }
+      g.strokeStyle = rgba(hotArc ? COL.atk : COL.log, (hotArc ? .55 : .2) * a); g.stroke();
+    });
+    g.restore();
+  }
+  function drawAirPackets(g, c, airs) {
+    g.save(); g.globalCompositeOperation = 'lighter';
+    airs.forEach(function (k) {
+      var spr = sprite(k.col);
+      for (var i = 5; i >= 0; i--) {
+        var t = k.t - i * .025; if (t < 0) continue;
+        var q = bez(k.A, t), p = P(q[0], q[1], q[2], c), f = 1 - i / 6, rr = 8 * (.45 + .55 * f);
+        g.globalAlpha = f * f * Math.min(1, (1 - k.t) * 6);
+        g.drawImage(spr, p[0] - rr, p[1] - rr, rr * 2, rr * 2);
+      }
+    });
+    g.restore();
+  }
+  function drawSparks(g, c, sparks) {
+    if (!sparks.length) return;
+    g.save(); g.globalCompositeOperation = 'lighter';
+    sparks.forEach(function (s) {
+      var p = P(WALL.x, s.y, s.z, c), k = s.t / 520;
+      g.globalAlpha = (1 - k) * .9;
+      g.strokeStyle = rgba(COL.atk, 1); g.lineWidth = 1.1;
+      g.beginPath(); g.ellipse(p[0], p[1], 2 + k * 6, 3 + k * 13, 0, 0, Math.PI * 2); g.stroke();
+      g.drawImage(sprite(COL.atk), p[0] - 9, p[1] - 9, 18, 18);
+    });
+    g.restore();
+  }
+  function fitCanvas(canvas) {
+    var r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    var D = Math.min(dpr, 2, Math.sqrt(3.2e6 / Math.max(1, r.width * r.height)));
+    canvas.width = Math.max(1, Math.round(r.width * D)); canvas.height = Math.max(1, Math.round(r.height * D));
+    return { W: r.width, H: r.height, DPR: D };
+  }
+  function angDiff(a, b) { var d = a - b; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; }
+  function go(href) {
+    if (location.hash === href) { var t = document.querySelector(href); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
+    else location.hash = href;
+  }
+
+  /* =================================================================
+     LA SCÈNE DE L'OUVERTURE : le plan se dessine, se lève, puis se défend
      ================================================================= */
   function initScene() {
     var canvas = document.getElementById('scene');
@@ -1292,9 +1510,11 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     if (!canvas || !canvas.getContext || !stage) return;
     var ctx = canvas.getContext('2d');
     var pauseBtn = document.getElementById('pause');
-    var socStatus = document.getElementById('soc-status');
+    var socStatus = document.getElementById('soc-status'), farmStatus = document.getElementById('farm-status');
     var ACTS = Array.prototype.slice.call(document.querySelectorAll('.acts .act'));
     var TAGS = Array.prototype.slice.call(document.querySelectorAll('#tags .tag')).map(function (el) { return { el: el, n: el.getAttribute('data-node'), w: 0, h: 0 }; });
+    var SBTN = Array.prototype.slice.call(document.querySelectorAll('.scn-b'));
+    var FEED = Array.prototype.slice.call(document.querySelectorAll('#feed li'));
 
     var W = 0, H = 0, DPR = 1;
     var cam = { a: 0, b: 0, s: 30, ox: 0, oy: 0, cx: 8.5, cy: 6 };
@@ -1302,32 +1522,23 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     var fitA = { s: 30, ox: 0, oy: 0 }, fitB = { s: 30, ox: 0, oy: 0 };
     var CALL = {};
 
-    /* Calendrier de l'ouverture, en millisecondes */
-    var DRAW0 = 250, DRAW1 = 1900, CAM0 = 1750, CAM1 = 3750, LIVE = 3500, ATK0 = 4400, CYCLE = 12500;
-
-    var R_NORM = { k8s: join(['inet', 'gwsw', 'k8s']), compose: join(['inet', 'gwsw', 'compose']), farm: join(['inet', 'gwsw', 'farm']) };
-    var R_TUN = join(['tunnel', 'gwsw', 'srv']);
-    var R_ATK = mkPath(CABLES.inet);
-    var DESTS = ['k8s', 'compose', 'farm'];
-    var ARC_FROM = ['gw', 'sw', 'k8s', 'compose', 'farm', 'srv'];
-    var ARCS = {};
-    ARC_FROM.forEach(function (k) {
-      var a = NODES[k], s = NODES.soc, dist = Math.hypot(a.ax - s.ax, a.ay - s.ay);
-      ARCS[k] = [[a.ax, a.ay, a.top + .05], [(a.ax + s.ax) / 2, (a.ay + s.ay) / 2, Math.max(a.top, s.top) + 1.1 + dist * .13], [s.ax, s.ay, s.top + .08]];
-    });
+    /* Calendrier de l'ouverture, puis d'une attaque, en millisecondes */
+    var DRAW0 = 250, DRAW1 = 1900, CAM0 = 1750, CAM1 = 3750, LIVE = 3500, ATK0 = 4400;
+    var U_LOG = 1300, U_RULE = 2300, U_MITRE = 3200, U_RESP = 4200, U_END = 9000, U_CLEAR = 9900, CYCLE = 11500;
 
     var T = 0, last = 0, running = false, paused = false, inView = true;
-    var S = { attacking: false, alert: false, u: -1, wall: 0, radar: -100 * D2R, acts: 0, status: '' };
+    var scn = 'ssh', t0 = ATK0;
+    var S = { u: -1, net: false, alert: false, hit: null, wall: 0, cage: 0, radar: -100 * D2R, acts: 0, step: -1, soc: '', farm: '' };
     var par = { a: 0, b: 0, ta: 0, tb: 0 };
-    var packets = [], airs = [], sparks = [], acc = { n: 0, t: 500, l: 250, a: 0, g: 0 };
+    var st = mkState();
     var hulls = {}, hot = null, hotTag = null, hotCanvas = null;
 
     /* ---------- Étiquettes : où se placer par rapport à leur machine ---------- */
     function callouts(narrow) {
-      if (narrow) return { internet: ['below', 4], client: ['above', 5], gw: ['above', 5], soc: ['above', 5], sw: ['above', 5],
-                           k8s: ['above', 5], compose: ['above', 5], farm: ['above', 5], srv: ['below', 5], wall: ['above', 5] };
-      return { internet: ['below', 10], client: ['above', 12], gw: ['above', 14], soc: ['above', 12], sw: ['above', 14],
-               k8s: ['right', 14], compose: ['right', 14], farm: ['below', 12], srv: ['below', 12], wall: ['above', 10] };
+      if (narrow) return { internet: ['above', 4], kali: ['below', 5], client: ['above', 5], gw: ['above', 5], soc: ['above', 5], sw: ['above', 5],
+                           k8s: ['above', 5], compose: ['above', 5], farm: ['above', 5], srv: ['below', 5], jarvis: ['below', 5], wall: ['above', 5] };
+      return { internet: ['above', 10], kali: ['below', 12], client: ['above', 12], gw: ['above', 14], soc: ['above', 12], sw: ['above', 14],
+               k8s: ['right', 14], compose: ['right', 14], farm: ['below', 12], srv: ['below', 12], jarvis: ['below', 12], wall: ['above', 10] };
     }
     function labelRect(cfg, nb, t) {
       var gp = cfg[1], cx = (nb.x0 + nb.x1) / 2, cy = (nb.y0 + nb.y1) / 2;
@@ -1354,6 +1565,7 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
 
     function measure() { TAGS.forEach(function (t) { var side = CALL[t.n] ? CALL[t.n][0] : ''; t.el.classList.toggle('r', side === 'right'); t.el.classList.toggle('l', side === 'left'); t.w = t.el.offsetWidth; t.h = t.el.offsetHeight; }); }
     function tagOf(n) { for (var i = 0; i < TAGS.length; i++) if (TAGS[i].n === n) return TAGS[i]; return { w: 0, h: 0 }; }
+    function remeasure(n) { var t = tagOf(n); if (t.el) { t.w = t.el.offsetWidth; t.h = t.el.offsetHeight; } }
 
     function stageRect() {
       var a = stage.getBoundingClientRect(), b = canvas.getBoundingClientRect();
@@ -1392,230 +1604,84 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
       var geom = [r.width, r.height, g0.x, g0.y, g0.w, g0.h, window.devicePixelRatio].map(Math.round).join(',');
       if (!force && geom === lastGeom) return;   /* la barre d'adresse mobile déclenche des « resize » sans rien changer */
       lastGeom = geom;
-      W = r.width; H = r.height;
-      var dpr = window.devicePixelRatio || 1;
-      DPR = Math.min(dpr, 2, Math.sqrt(3.2e6 / Math.max(1, W * H)));
-      canvas.width = Math.max(1, Math.round(W * DPR)); canvas.height = Math.max(1, Math.round(H * DPR));
+      var f = fitCanvas(canvas); W = f.W; H = f.H; DPR = f.DPR;
       var compact = stageRect().w < 640;
       hero.classList.toggle('compact', compact);
       CALL = callouts(compact);
       var sr = stageRect();
-      var keep = socStatus.textContent;
-      socStatus.textContent = 'Alerte : force brute SSH (T1110)';
+      /* On mesure avec les textes d'alerte les plus longs, pour leur garder la place */
+      socStatus.textContent = SCN.priv.status; farmStatus.textContent = 'Compte désactivé';
       measure();
       fitA = fitFor(0, 0, false);
       var best = null;
       (sr.w / sr.h < 1.15 ? [35, 50, 62] : [35]).forEach(function (deg) {
-        var f = fitFor(deg * D2R, FINAL_B, true);
-        if (!best || f.s > best.f.s * 1.06) best = { deg: deg, f: f };
+        var ft = fitFor(deg * D2R, FINAL_B, true);
+        if (!best || ft.s > best.f.s * 1.06) best = { deg: deg, f: ft };
       });
       FINAL_A = best.deg * D2R; fitB = best.f;
-      socStatus.textContent = keep;
+      socStatus.textContent = S.soc; farmStatus.textContent = S.farm;
       measure();
     }
 
-    /* ---------- Le temps qui passe ---------- */
-    function angDiff(a, b) { var d = a - b; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; }
-    function setStatus(st) { if (st !== S.status) { S.status = st; socStatus.textContent = st; var t = tagOf('soc'); t.w = t.el.offsetWidth; t.h = t.el.offsetHeight; } }
+    /* ---------- La console ---------- */
+    function setStep(n) {
+      if (n === S.step) return;
+      S.step = n;
+      FEED.forEach(function (li, i) { li.classList.toggle('on', i < n); });
+    }
+    function setScn(k) {
+      scn = k;
+      SBTN.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-scn') === k ? 'true' : 'false'); });
+      FEED.forEach(function (li, i) { li.classList.remove('on'); li.lastElementChild.textContent = SCN[k].feed[i]; });
+      S.step = 0;
+    }
+    function setSoc(v) { if (v !== S.soc) { S.soc = v; socStatus.textContent = v; remeasure('soc'); } }
+    function setFarm(v) { if (v !== S.farm) { S.farm = v; farmStatus.textContent = v; remeasure('farm'); } }
     function setActs(n) { if (n !== S.acts) { S.acts = n; ACTS.forEach(function (el, i) { el.classList.toggle('on', i < n); }); } }
 
+    /* ---------- Le temps qui passe ---------- */
     function update(dt) {
       par.a += (par.ta - par.a) * Math.min(1, dt * .004);
       par.b += (par.tb - par.b) * Math.min(1, dt * .004);
       var live = T >= LIVE;
-      var u = T >= ATK0 ? (T - ATK0) % CYCLE : -1;
+      var u = T >= t0 ? T - t0 : -1;
+      if (u >= CYCLE) { setScn(SCN_ORDER[(SCN_ORDER.indexOf(scn) + 1) % SCN_ORDER.length]); t0 = T; u = 0; }
+      var sc = SCN[scn], responding = u >= U_RESP && u < U_END;
       S.u = u;
-      S.attacking = u >= 0 && u < 3600;
-      S.alert = u >= 1800 && u < 8300;
-      var wallTarget = (u >= 2600 && u < 8300) ? WALL.h : 0;
-      S.wall += (wallTarget - S.wall) * Math.min(1, dt * .0065);
-      setStatus(u >= 1800 && u < 4800 ? 'Alerte : force brute SSH (T1110)' : (u >= 4800 && u < 8300 ? 'Incident ouvert pour analyse' : ''));
-      setActs(Math.max(S.acts, T >= DRAW0 ? 1 : 0, T >= CAM0 ? 2 : 0, S.wall > .7 ? 3 : 0));
+      S.net = !!sc.route && u >= 0 && u < U_RESP + 300;
+      S.alert = u >= U_RULE && u < U_END;
+      S.hit = (u >= U_LOG - 500 && u < U_RESP + 600) ? sc.target : null;
+      S.wall += ((responding && sc.resp === 'wall' ? WALL.h : 0) - S.wall) * Math.min(1, dt * .0065);
+      S.cage += ((responding && sc.resp === 'cage' ? 1 : 0) - S.cage) * Math.min(1, dt * .0065);
+      setStep(u < U_LOG ? 0 : u < U_RULE ? 1 : u < U_MITRE ? 2 : u < U_RESP ? 3 : u < U_CLEAR ? 4 : 0);
+      setSoc(u >= U_RULE && u < U_RESP + 1000 ? sc.status : (u >= U_RESP + 1000 && u < U_END ? 'Incident ouvert pour analyse' : ''));
+      setFarm(S.cage > .5 ? 'Compte désactivé' : '');
+      setActs(Math.max(S.acts, T >= DRAW0 ? 1 : 0, T >= CAM0 ? 2 : 0, (S.wall > .7 || S.cage > .55) ? 3 : 0));
 
       if (live) {
-        acc.n -= dt; if (acc.n <= 0) { packets.push({ r: R_NORM[DESTS[(Math.random() * 3) | 0]], d: 0, v: 3.1, col: COL.norm, stop: null, fade: 1 }); acc.n = 480 + Math.random() * 520; }
-        acc.t -= dt; if (acc.t <= 0) { packets.push({ r: R_TUN, d: 0, v: 2.5, col: COL.tun, stop: null, fade: 1 }); acc.t = 1250 + Math.random() * 700; }
-        acc.l -= dt; if (acc.l <= 0) { airs.push({ A: ARCS[ARC_FROM[(Math.random() * ARC_FROM.length) | 0]], t: 0, dur: 1500, col: COL.log }); acc.l = 380 + Math.random() * 360; }
-        if (S.attacking) { acc.a -= dt; if (acc.a <= 0) { packets.push({ r: R_ATK, d: 0, v: 4.4, col: COL.atk, stop: S.wall > .25 ? STOP : null, fade: 1 }); acc.a = 120 + Math.random() * 70; } }
-        if (u >= 600 && u < 2600) { acc.g -= dt; if (acc.g <= 0) { airs.push({ A: ARCS.gw, t: 0, dur: 1000, col: COL.atk }); acc.g = 200; } }
+        ambient(st, dt);
+        if (S.net) { st.acc.a -= dt; if (st.acc.a <= 0) { st.packets.push({ r: sc.route, d: 0, v: sc.v, col: COL.atk, stop: S.wall > .25 ? STOP : null, fade: 1 }); st.acc.a = 120 + Math.random() * 70; } }
+        if (u >= U_LOG && u < U_RESP) { st.acc.g -= dt; if (st.acc.g <= 0) { st.airs.push({ A: ARCS[sc.target], t: 0, dur: 1000, col: COL.atk }); st.acc.g = 200; } }
       }
-      for (var i = packets.length - 1; i >= 0; i--) {
-        var k = packets[i];
-        if (k.col === COL.atk && k.stop === null && S.wall > .25 && k.d < STOP) k.stop = STOP;
-        if (k.stop !== null && k.d >= k.stop) {
-          if (k.fade === 1) sparks.push({ y: WALL.y + (Math.random() - .5) * 1.2, z: .15 + Math.random() * Math.max(.2, S.wall - .35), t: 0 });
-          k.d = k.stop; k.fade -= dt / 260;
-        } else k.d += k.v * dt / 1000;
-        if (k.d >= k.r.T || k.fade <= 0) packets.splice(i, 1);
-      }
-      for (var j = airs.length - 1; j >= 0; j--) { airs[j].t += dt / airs[j].dur; if (airs[j].t >= 1) airs.splice(j, 1); }
-      for (var m = sparks.length - 1; m >= 0; m--) { sparks[m].t += dt; if (sparks[m].t > 520) sparks.splice(m, 1); }
-      if (S.alert) S.radar += angDiff(TARGET, S.radar) * Math.min(1, dt * .005);
+      advance(st, dt, S.wall);
+      if (S.alert) { var n = NODES[sc.target], s = NODES.soc; S.radar += angDiff(Math.atan2(n.ay - s.ay, n.ax - s.ax), S.radar) * Math.min(1, dt * .005); }
       else S.radar += dt * .00115;
     }
-
-    /* ---------- Le sol ---------- */
-    function drawFloor(g, c, a) {
-      if (a <= 0) return;
-      var p = P(c.cx + 1.2, c.cy, 0, c), R = 12 * c.s;
-      g.save(); g.translate(p[0], p[1]); g.scale(1, Math.max(c.cb, .05));
-      var gr = g.createRadialGradient(0, 0, 0, 0, 0, R);
-      gr.addColorStop(0, 'rgba(80,140,220,' + (.2 * a) + ')'); gr.addColorStop(1, 'rgba(80,140,220,0)');
-      g.fillStyle = gr; g.beginPath(); g.arc(0, 0, R, 0, Math.PI * 2); g.fill();
-      g.restore();
+    /* Image fixe : l'attaque choisie, déjà repérée et bloquée */
+    function freeze() {
+      var sc = SCN[scn];
+      st.packets.length = 0; st.airs.length = 0; st.sparks.length = 0;
+      T = Math.max(T, 20000); t0 = T - (U_RESP + 300);
+      S.wall = sc.resp === 'wall' ? WALL.h : 0; S.cage = sc.resp === 'cage' ? 1 : 0;
+      var n = NODES[sc.target], s = NODES.soc; S.radar = Math.atan2(n.ay - s.ay, n.ax - s.ax);
+      update(0); draw();
     }
-    function gridLine(g, c, x0, y0, x1, y1, major, dist, a) {
-      var f = clamp(1 - dist / 15, 0, 1);
-      if (f <= 0) return;
-      var p = P(x0, y0, 0, c), q = P(x1, y1, 0, c), m = (major ? .2 : .085) * f * a;
-      var gr = g.createLinearGradient(p[0], p[1], q[0], q[1]);
-      gr.addColorStop(0, 'rgba(160,198,245,0)'); gr.addColorStop(.5, 'rgba(160,198,245,' + m + ')'); gr.addColorStop(1, 'rgba(160,198,245,0)');
-      g.strokeStyle = gr; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke();
-    }
-    function drawGrid(g, c, a) {
-      if (a <= 0) return;
-      g.save(); g.lineWidth = 1;
-      for (var i = -7; i <= 24; i++) gridLine(g, c, i, -8, i, 20, i % 4 === 0, Math.abs(i - c.cx), a);
-      for (var j = -8; j <= 20; j++) gridLine(g, c, -7, j, 24, j, j % 4 === 0, Math.abs(j - c.cy), a);
-      g.restore();
-    }
-    function drawRadar(g, c, a) {
-      if (a <= 0) return;
-      var n = NODES.soc, p = P(n.ax, n.ay, 0, c), R = RADAR * c.s, rY = Math.max(.001, R * c.cb), col = S.alert ? COL.atk : COL.log;
-      g.save(); g.globalAlpha = a;
-      g.setLineDash([3, 7]); g.lineWidth = 1;
-      [1 / 3, 2 / 3, 1].forEach(function (k) { g.beginPath(); g.ellipse(p[0], p[1], R * k, rY * k, 0, 0, Math.PI * 2); g.strokeStyle = rgba(col, .17); g.stroke(); });
-      g.setLineDash([]);
-      g.globalCompositeOperation = 'lighter';
-      var span = .95, N = 20, phi = S.radar + c.a;
-      for (var i = 0; i < N; i++) {
-        var a1 = phi - span * i / N, a0 = phi - span * (i + 1) / N;
-        g.beginPath(); g.moveTo(p[0], p[1]); g.ellipse(p[0], p[1], R, rY, 0, a0, a1); g.closePath();
-        g.fillStyle = rgba(col, .22 * Math.pow(1 - i / N, 1.6)); g.fill();
-      }
-      g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(p[0] + Math.cos(phi) * R, p[1] + Math.sin(phi) * rY);
-      g.strokeStyle = rgba(col, .5); g.lineWidth = 1.2; g.stroke();
-      g.restore();
-    }
-    function drawPortal(g, c, a) {
-      if (a <= 0) return;
-      var n = NODES.internet, p = P(n.x, n.y, 0, c), col = S.attacking ? COL.atk : COL.norm;
-      g.save(); g.globalAlpha = a;
-      for (var i = 0; i < 3; i++) {
-        var k = ((T / (S.attacking ? 1100 : 2400)) + i / 3) % 1, R = (.3 + k * 1.15) * c.s;
-        g.beginPath(); g.ellipse(p[0], p[1], R, Math.max(.001, R * c.cb), 0, 0, Math.PI * 2);
-        g.strokeStyle = rgba(col, (1 - k) * .6); g.lineWidth = 1.2; g.stroke();
-      }
-      g.beginPath(); g.ellipse(p[0], p[1], .3 * c.s, Math.max(.001, .3 * c.s * c.cb), 0, 0, Math.PI * 2);
-      g.fillStyle = rgba(col, .4); g.fill();
-      g.restore();
-    }
-    function drawCables(g, c, k0) {
-      if (k0 <= 0) return;
-      Object.keys(CABLES).forEach(function (id, idx) {
-        var pts = CABLES[id].map(function (q) { return P(q[0], q[1], 0, c); });
-        var len = 0; for (var i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
-        var k = clamp(k0 * 1.3 - idx * .045, 0, 1);
-        if (k <= 0) return;
-        g.save();
-        g.setLineDash(k < 1 ? [len * k, len + 10] : []);
-        poly(g, pts, false);
-        if (id === 'tunnel') {
-          g.strokeStyle = rgba(COL.tun, .34); g.lineWidth = 6.5; g.stroke();
-          g.strokeStyle = 'rgb(14,40,74)'; g.lineWidth = 2.6; g.stroke();
-          g.strokeStyle = rgba(COL.tun, .6); g.lineWidth = .8; g.stroke();
-        } else if (id === 'inet' && S.attacking && k >= 1) {
-          g.strokeStyle = rgba(COL.atk, .18); g.lineWidth = 5; g.stroke();
-          g.setLineDash([7, 6]); g.lineDashOffset = -T * .03;
-          g.strokeStyle = rgba(COL.atk, .95); g.lineWidth = 1.6; g.stroke();
-        } else {
-          g.strokeStyle = 'rgba(160,200,250,.13)'; g.lineWidth = 4.5; g.stroke();
-          g.strokeStyle = 'rgba(214,232,255,.62)'; g.lineWidth = 1.15; g.stroke();
-        }
-        g.restore();
-      });
-      g.save(); g.globalAlpha = k0; g.strokeStyle = 'rgba(214,232,255,.4)'; g.lineWidth = 1; g.beginPath();
-      CLUSTER.forEach(function (l) { seg(g, P(l[0][0], l[0][1], 0, c), P(l[1][0], l[1][1], 0, c)); });
-      g.stroke(); g.restore();
-    }
-    function drawGroundPackets(g, c) {
-      g.save(); g.globalCompositeOperation = 'lighter';
-      packets.forEach(function (k) {
-        var spr = sprite(k.col), big = k.col === COL.atk ? 13 : 10;
-        for (var i = 6; i >= 0; i--) {
-          var d = k.d - i * .15; if (d < 0) continue;
-          var q = at(k.r, d), p = P(q[0], q[1], .04, c), f = 1 - i / 7, rr = big * (.4 + .6 * f);
-          g.globalAlpha = f * f * k.fade;
-          g.drawImage(spr, p[0] - rr, p[1] - rr, rr * 2, rr * 2);
-        }
-      });
-      g.restore();
-    }
-
-    /* ---------- En hauteur ---------- */
-    function drawWall(g, c) {
-      var h = S.wall;
-      if (h < .015) return;
-      var y0 = WALL.y - WALL.half, y1 = WALL.y + WALL.half, x = WALL.x;
-      var q = [P(x, y0, 0, c), P(x, y1, 0, c), P(x, y1, h, c), P(x, y0, h, c)];
-      g.save();
-      g.globalCompositeOperation = 'lighter';
-      poly(g, q, true); g.fillStyle = rgba(COL.atk, .14); g.fill();
-      g.globalCompositeOperation = 'source-over';
-      g.beginPath();
-      for (var z = .18; z < h; z += .18) seg(g, P(x, y0, z, c), P(x, y1, z, c));
-      g.strokeStyle = rgba(COL.atk, .35); g.lineWidth = .8; g.stroke();
-      poly(g, q, true);
-      g.strokeStyle = rgba(COL.atk, .25); g.lineWidth = 4.5; g.stroke();
-      g.strokeStyle = rgba(COL.atk, .95); g.lineWidth = 1.3; g.stroke();
-      g.restore();
-    }
-    function drawAntenna(g, c, r) {
-      if (r <= .02) return;
-      var n = NODES.soc, top = n.top * r, p0 = P(n.ax, n.ay, top, c), p1 = P(n.ax, n.ay, top + n.antenna * r, c);
-      g.save();
-      g.strokeStyle = rgba(NIGHT.edge, .85); g.lineWidth = 1.1; g.beginPath(); seg(g, p0, p1); g.stroke();
-      var blink = S.alert ? (Math.sin(T / 85) > 0 ? 1 : .3) : .55 + .45 * Math.sin(T / 650);
-      g.globalCompositeOperation = 'lighter'; g.globalAlpha = blink * r;
-      var rr = S.alert ? 13 : 9;
-      g.drawImage(sprite(S.alert ? COL.atk : COL.log), p1[0] - rr, p1[1] - rr, rr * 2, rr * 2);
-      g.restore();
-    }
-    function drawArcs(g, c, a) {
-      if (a <= 0) return;
-      g.save(); g.setLineDash([2, 6]); g.lineWidth = 1;
-      ARC_FROM.forEach(function (k) {
-        var A = ARCS[k], hotArc = k === 'gw' && S.u >= 600 && S.u < 3000;
-        g.beginPath();
-        for (var i = 0; i <= 28; i++) { var q = bez(A, i / 28), p = P(q[0], q[1], q[2], c); if (i) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); }
-        g.strokeStyle = rgba(hotArc ? COL.atk : COL.log, (hotArc ? .55 : .2) * a); g.stroke();
-      });
-      g.restore();
-    }
-    function drawAirPackets(g, c) {
-      g.save(); g.globalCompositeOperation = 'lighter';
-      airs.forEach(function (k) {
-        var spr = sprite(k.col);
-        for (var i = 5; i >= 0; i--) {
-          var t = k.t - i * .025; if (t < 0) continue;
-          var q = bez(k.A, t), p = P(q[0], q[1], q[2], c), f = 1 - i / 6, rr = 8 * (.45 + .55 * f);
-          g.globalAlpha = f * f * Math.min(1, (1 - k.t) * 6);
-          g.drawImage(spr, p[0] - rr, p[1] - rr, rr * 2, rr * 2);
-        }
-      });
-      g.restore();
-    }
-    function drawSparks(g, c) {
-      if (!sparks.length) return;
-      g.save(); g.globalCompositeOperation = 'lighter';
-      sparks.forEach(function (s) {
-        var p = P(WALL.x, s.y, s.z, c), k = s.t / 520;
-        g.globalAlpha = (1 - k) * .9;
-        g.strokeStyle = rgba(COL.atk, 1); g.lineWidth = 1.1;
-        g.beginPath(); g.ellipse(p[0], p[1], 2 + k * 6, 3 + k * 13, 0, 0, Math.PI * 2); g.stroke();
-        g.drawImage(sprite(COL.atk), p[0] - 9, p[1] - 9, 18, 18);
-      });
-      g.restore();
+    function pick(k) {
+      setScn(k);
+      st.packets = st.packets.filter(function (p) { return p.col !== COL.atk; });
+      st.airs = st.airs.filter(function (p) { return p.col !== COL.atk; });
+      if (reduce || paused) { freeze(); return; }
+      t0 = Math.max(T, ATK0);
     }
 
     /* ---------- Étiquettes et traits de rappel ---------- */
@@ -1681,37 +1747,31 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
 
       drawFloor(g, cam, drawK);
       drawGrid(g, cam, drawK);
-      drawRadar(g, cam, liveK);
-      drawPortal(g, cam, drawK);
-      drawCables(g, cam, drawK);
-      drawGroundPackets(g, cam);
+      drawRadar(g, cam, liveK, S.radar, S.alert);
+      drawPortal(g, cam, drawK, T);
+      drawVoice(g, cam, liveK * .9, T);
+      if (S.hit) drawHit(g, cam, S.hit, liveK * clamp((S.u - (U_LOG - 500)) / 400, 0, 1), T);
+      drawCables(g, cam, drawK, T, S.net);
+      drawGroundPackets(g, cam, st.packets);
 
-      var list = [];
-      Object.keys(NODES).forEach(function (k) {
-        var n = NODES[k];
-        if (!n.boxes) return;
-        n.boxes.forEach(function (b) {
-          var d = P(b.cx, b.cy, 0, cam)[2];
-          if (b.ghost) { list.push({ t: 'gb', b: b, k: k, L: 1, d: d - .02 }); list.push({ t: 'gf', b: b, k: k, L: 1, d: d + .02 }); }
-          else list.push({ t: 'box', b: b, k: k, L: b.layer, d: d });
-        });
-      });
-      list.push({ t: 'wall', L: 1, d: P(WALL.x, WALL.y, 0, cam)[2] });
-      list.sort(function (p, q) { return (p.L - q.L) || (p.d - q.d); });
+      var extras = [{ fn: function () { drawWall(g, cam, S.wall); }, L: 1, d: P(WALL.x, WALL.y, 0, cam)[2] }];
+      if (S.cage > .01) {
+        var dc = P(CAGE.cx, CAGE.cy, 0, cam)[2];
+        extras.push({ fn: function () { drawGhost(g, cam, CAGE, S.cage, NIGHT, 'back'); }, L: 1, d: dc - 3 });
+        extras.push({ fn: function () { drawGhost(g, cam, CAGE, S.cage, NIGHT, 'front'); }, L: 1, d: dc + 3 });
+      }
       var pts = {};
-      list.forEach(function (it) {
-        if (it.t === 'wall') { drawWall(g, cam); return; }
-        var r = rise[it.k];
-        if (it.t !== 'box') { drawGhost(g, cam, it.b, r, NIGHT, it.t === 'gf' ? 'front' : 'back'); return; }
-        var B = drawBox(g, cam, it.b, r, NIGHT, { hot: hot === it.k, alert: it.k === 'soc' && S.alert, draw: r > 0 ? 1 : drawK });
-        (pts[it.k] = pts[it.k] || []).push.apply(pts[it.k], B.v);
-      });
+      drawSolids(g, cam,
+        function (k) { return rise[k]; },
+        function () { return NIGHT; },
+        function (k, r) { return { hot: hot === k, alert: (k === 'soc' && S.alert) || k === S.hit || !!NODES[k].hostile, draw: r > 0 ? 1 : drawK }; },
+        extras, pts);
       Object.keys(pts).forEach(function (k) { hulls[k] = hull(pts[k]); });
 
-      drawAntenna(g, cam, rise.soc);
-      drawArcs(g, cam, liveK);
-      drawAirPackets(g, cam);
-      drawSparks(g, cam);
+      drawAntenna(g, cam, rise.soc, T, S.alert);
+      drawArcs(g, cam, liveK, S.u >= U_LOG && S.u < U_RESP ? SCN[scn].target : null);
+      drawAirPackets(g, cam, st.airs);
+      drawSparks(g, cam, st.sparks);
       drawCallouts(g, nodeBounds(cam, rise), drawK);
     }
 
@@ -1752,6 +1812,7 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
       t.el.addEventListener('focus', function () { hotTag = t.n; setHot(); });
       t.el.addEventListener('blur', function () { hotTag = null; setHot(); });
     });
+    SBTN.forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-scn')); }); });
     pauseBtn.addEventListener('click', function () {
       paused = !paused;
       pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
@@ -1760,13 +1821,12 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
     });
 
     /* ---------- Démarrage ---------- */
+    setScn('ssh');
     resize(true);
     if (reduce) {
       /* Mouvement réduit : la scène finale, fixe, avec l'attaque déjà bloquée */
-      T = ATK0 + 3400; S.u = 3400; S.alert = true; S.wall = WALL.h; S.radar = TARGET;
-      setStatus('Alerte : force brute SSH (T1110)'); setActs(3);
       pauseBtn.hidden = true;
-      draw();
+      freeze();
     } else {
       draw();
       if ('IntersectionObserver' in window) {
@@ -1780,46 +1840,124 @@ details li::before { content: ""; position: absolute; left: 0; top: .72em; width
   }
 
   /* =================================================================
-     LES VIGNETTES DES PLANCHES : les mêmes machines, sur papier
+     LA VISITE : le même plan, qui se déplace de machine en machine
+     pendant que le visiteur lit les projets
      ================================================================= */
-  function drawGlyphs() {
-    Array.prototype.forEach.call(document.querySelectorAll('canvas.glyph'), function (cv) {
-      var n = NODES[cv.getAttribute('data-node')];
-      if (!n || !n.boxes || !cv.getContext) return;
-      var r = cv.getBoundingClientRect();
-      if (!r.width) return;
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
-      var g = cv.getContext('2d');
-      g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, r.width, r.height);
-      var c = { a: 32 * D2R, b: 56 * D2R, s: 1, ox: 0, oy: 0, cx: n.ax, cy: n.ay }; trig(c);
-      var m = { x0: 1e9, y0: 1e9, x1: -1e9, y1: -1e9 };
-      n.boxes.forEach(function (b) { boxVerts(c, b, 1).v.forEach(function (p) { m.x0 = Math.min(m.x0, p[0]); m.x1 = Math.max(m.x1, p[0]); m.y0 = Math.min(m.y0, p[1]); m.y1 = Math.max(m.y1, p[1]); }); });
-      if (n.antenna) { var tip = P(n.ax, n.ay, n.az, c); m.y0 = Math.min(m.y0, tip[1]); }
-      var s = Math.min((r.width - 14) / (m.x1 - m.x0), (r.height - 14) / (m.y1 - m.y0));
-      c.s = s; c.ox = r.width / 2 - (m.x0 + m.x1) / 2 * s; c.oy = r.height / 2 - (m.y0 + m.y1) / 2 * s;
-      var list = [];
-      n.boxes.forEach(function (b) {
-        var d = P(b.cx, b.cy, 0, c)[2];
-        if (b.ghost) { list.push({ t: 'gb', b: b, L: 1, d: d - .02 }); list.push({ t: 'gf', b: b, L: 1, d: d + .02 }); }
-        else list.push({ t: 'box', b: b, L: b.layer, d: d });
-      });
-      list.sort(function (p, q) { return (p.L - q.L) || (p.d - q.d); });
-      list.forEach(function (it) {
-        if (it.t === 'box') drawBox(g, c, it.b, 1, PAPER, {});
-        else drawGhost(g, c, it.b, 1, PAPER, it.t === 'gf' ? 'front' : 'back');
-      });
-      if (n.antenna) {
-        var p0 = P(n.ax, n.ay, n.top, c), p1 = P(n.ax, n.ay, n.az, c);
-        g.strokeStyle = rgba(PAPER.edge, 1); g.lineWidth = 1; g.beginPath(); seg(g, p0, p1); g.stroke();
-        g.fillStyle = 'rgb(42,91,199)'; g.beginPath(); g.arc(p1[0], p1[1], 2.4, 0, Math.PI * 2); g.fill();
-      }
+  function initTour() {
+    var sec = document.getElementById('projets'), view = document.getElementById('tour-view'), canvas = document.getElementById('tour-scene');
+    var chs = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
+    if (!sec || !view || !canvas || !canvas.getContext || !chs.length) return;
+    var ctx = canvas.getContext('2d');
+    var capN = document.getElementById('tour-n'), capT = document.getElementById('tour-t'), dotsEl = document.getElementById('tour-dots');
+    var W = 0, H = 0, DPR = 1, T = 0, last = 0, running = false, inView = false, cur = -1;
+    var PITCH = 54 * D2R;
+    var cam = { a: 35 * D2R, b: PITCH, s: 40, ox: 0, oy: 0, cx: 8.5, cy: 6 };
+    var base = { a: cam.a, s: cam.s, ox: 0, oy: 0, cx: cam.cx, cy: cam.cy }, tg = null, lit = {};
+    var st = mkState(), radarA = .3, radarAng = 0;
+    var KEYS = ['a', 's', 'ox', 'oy', 'cx', 'cy'];
+
+    sec.classList.add('live');
+    var DOTS = chs.map(function (ch) {
+      var a = document.createElement('a');
+      a.href = '#' + ch.id; a.title = ch.getAttribute('data-name'); a.setAttribute('aria-label', ch.getAttribute('data-name'));
+      dotsEl.appendChild(a);
+      return a;
     });
+
+    /* Où placer la caméra pour bien voir la machine d'un projet */
+    function targetFor(i) {
+      var ch = chs[i], n = NODES[ch.getAttribute('data-node')], yaw = (+ch.getAttribute('data-yaw') || 35) * D2R;
+      var c = { a: yaw, b: PITCH, s: 1, ox: 0, oy: 0, cx: n.ax, cy: n.ay }; trig(c);
+      var m = { x0: 1e9, y0: 1e9, x1: -1e9, y1: -1e9 };
+      function add(p) { m.x0 = Math.min(m.x0, p[0]); m.x1 = Math.max(m.x1, p[0]); m.y0 = Math.min(m.y0, p[1]); m.y1 = Math.max(m.y1, p[1]); }
+      n.boxes.forEach(function (b) { boxVerts(c, b, 1).v.forEach(add); });
+      if (n.antenna) add(P(n.ax, n.ay, n.az, c));
+      var s = clamp(Math.min(W * .36 / (m.x1 - m.x0), H * .36 / (m.y1 - m.y0)), 22, 84);
+      return { a: yaw, s: s, cx: n.ax, cy: n.ay, ox: W / 2 - (m.x0 + m.x1) / 2 * s, oy: H * .48 - (m.y0 + m.y1) / 2 * s };
+    }
+    function snap() { KEYS.forEach(function (k) { base[k] = tg[k]; }); radarA = lit.soc ? 1 : .3; }
+    function setCur(i, hard) {
+      if (i === cur && !hard) return;
+      cur = i;
+      var ch = chs[i];
+      tg = targetFor(i);
+      lit = {};
+      ch.getAttribute('data-lit').split(' ').forEach(function (k) { lit[k] = 1; });
+      chs.forEach(function (c2, j) { c2.classList.toggle('active', j === i); });
+      DOTS.forEach(function (d, j) { if (j === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      capN.textContent = i + 1; capT.textContent = ch.getAttribute('data-name');
+      if (reduce || !running || hard) { snap(); draw(); }
+    }
+    /* Le projet en cours : celui qui traverse la ligne de lecture */
+    function probe() {
+      var vh = window.innerHeight, vr = view.getBoundingClientRect();
+      var stacked = vr.width > window.innerWidth * .9;
+      var line = stacked ? vr.bottom + (vh - vr.bottom) * .38 : vh * .55, idx = 0;
+      for (var i = 0; i < chs.length; i++) { if (chs[i].getBoundingClientRect().top <= line) idx = i; }
+      setCur(idx, false);
+    }
+
+    function update(dt) {
+      var k = 1 - Math.exp(-dt / 320);
+      KEYS.forEach(function (key) { base[key] += (tg[key] - base[key]) * k; });
+      radarA += ((lit.soc ? 1 : .3) - radarA) * k;
+      radarAng += dt * .00115;
+      ambient(st, dt);
+      advance(st, dt, 0);
+    }
+    function draw() {
+      if (!tg) return;
+      var g = ctx;
+      g.setTransform(DPR, 0, 0, DPR, 0, 0);
+      g.clearRect(0, 0, W, H);
+      cam.a = base.a + (reduce ? 0 : Math.sin(T / 4300) * 2.4 * D2R);
+      cam.s = base.s; cam.ox = base.ox; cam.oy = base.oy; cam.cx = base.cx; cam.cy = base.cy;
+      trig(cam);
+      drawFloor(g, cam, 1);
+      drawGrid(g, cam, 1);
+      drawRadar(g, cam, radarA, radarAng, false);
+      drawPortal(g, cam, .8, T);
+      drawVoice(g, cam, lit.jarvis ? 1 : .45, T);
+      drawCables(g, cam, 1, T, false);
+      drawGroundPackets(g, cam, st.packets);
+      drawSolids(g, cam,
+        function () { return 1; },
+        function (k) { return lit[k] ? NIGHT : DIM; },
+        function (k) { return { hot: !!lit[k], alert: !!NODES[k].hostile }; },
+        null, null);
+      drawAntenna(g, cam, 1, T, false);
+      drawArcs(g, cam, lit.soc ? 1 : .6, null);
+      drawAirPackets(g, cam, st.airs);
+    }
+    function loop(now) {
+      if (!running) return;
+      var dt = last ? Math.min(now - last, 50) : 16;
+      last = now; T += dt;
+      update(dt); draw();
+      requestAnimationFrame(loop);
+    }
+    function start() { if (running || !inView || document.hidden || reduce) return; running = true; last = 0; requestAnimationFrame(loop); }
+    function stop() { running = false; }
+    function resize() {
+      var f = fitCanvas(canvas); W = f.W; H = f.H; DPR = f.DPR;
+      if (cur >= 0) { tg = targetFor(cur); if (!running) { snap(); draw(); } }
+    }
+
+    resize();
+    setCur(0, true);
+    var ticking = false;
+    function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; probe(); }); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', debounce(function () { resize(); probe(); }, 120));
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { inView = e[0].isIntersecting; if (inView) { probe(); start(); } else stop(); }).observe(view);
+    } else { inView = true; start(); }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    probe();
   }
 
   initScene();
-  drawGlyphs();
-  window.addEventListener('resize', debounce(drawGlyphs, 200));
+  initTour();
 })();
 </script>
 </body>
